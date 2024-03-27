@@ -1,5 +1,4 @@
-
-# MakeItMVP Launch Academy Starter Repository
+# MakeItMVP Launch Academy Starter Repository!
 
 Welcome to the MakeItMVP Launch Academy Starter Repository! This repository is designed to provide new junior developers with a structured starting point for their assigned projects. It's built using React and Sass to help you get up and running quickly.
 
@@ -20,6 +19,7 @@ To begin working on your project, follow these steps:
    ```bash
    git clone https://github.com/MakeItMVP/LaunchAcademyStarter.git
    ```
+
 ````
 
 2. Change your working directory to the cloned repository:
@@ -90,3 +90,4 @@ This project is licensed under the [MIT License](LICENSE).
 ```
 
 ```
+````
