@@ -17,13 +17,13 @@ To begin working on this project, follow these steps:
 
 1. Clone this repository to your local machine:
 
-   ```
-   git clone https://github.com/MakeItMVP/LaunchAcademyStarter.git
+   ```bash
+   git clone https://github.com/makeitMVPadmin/Content.git
    ```
 
 2. Change your working directory to the cloned repository:
 
-   ```
+   ```bash
    cd Content
    ```
 
@@ -32,18 +32,8 @@ To begin working on this project, follow these steps:
    ```
    npm install
    ```
-
-4. Add your Firebase config values:
-
-   ```
-   1) Create a .env file in the root directory (do not just rename .env.sample)
-   2) In Firebase, go to the project you want to connect to
-   3) Go to "Project settings"
-   4) Scroll down to "Your apps" and select the app you want to connect to
-   5) Copy each value to your .env file
-   ```
-
-5. Start the development server:
+   
+4. Start the development server:
 
    ```
    npm start
