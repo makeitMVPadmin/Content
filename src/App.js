@@ -3,7 +3,6 @@ import Home from "./pages/HomePage/HomePage";
 import LinkedInPage from "./utils/LinkedInPage";
 import { LinkedInCallback } from "react-linkedin-login-oauth2";
 
-
 function App() {
   return (
     <Routes>
