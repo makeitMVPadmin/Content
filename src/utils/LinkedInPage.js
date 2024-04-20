@@ -37,7 +37,7 @@ const LinkedInPage = () =>{
       console.log("async");
       try {
         const accessTokenData = await getAccessTokenData(code);
-        console.log(accessTokenData);
+        console.log("hhhhhh", accessTokenData);
         setAccessToken(accessTokenData.accessToken);
       }catch (error) {
         console.error("Error fetching access token:", error);
