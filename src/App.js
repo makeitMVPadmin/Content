@@ -7,10 +7,11 @@ import PromptPage from "./pages/PromptPage/PromptPage";
 function App() {
   return (
     <Routes>
-      <Route exact path="/linkedin" element={<LinkedInCallback/>} />
-      {/* <Route path="/" element={<LinkedInPage/>} /> */}
       <Route path="/" element={<Home />} />
       <Route path="/prompt" element={<PromptPage />} />
+      <Route exact path="/linkedin/callback" element={<LinkedInCallback/>} />
+      <Route path="/linkedin" element={<LinkedInPage/>} />
+
     </Routes>
   );
 }

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function LinkedInPage() {
   const { linkedInLogin } = useLinkedIn({
     clientId: "77qlo0ib3tmrq5",
-    redirectUri: `${window.location.origin}/linkedin`,
+    redirectUri: `${window.location.origin}/linkedin/callback`,
     onSuccess: (code) => {
       console.log(code);
       setCode(code);
