@@ -23,20 +23,15 @@ export async function getAccessTokenData(authCode){
     //     "client_secret: ", process.env.REACT_APP_LINKEDIN_CLIENT_SECRET,)
     // console.log("query", queryParams);
     
-    const responseData = axios.post('https://www.linkedin.com/oauth/v2/accessToken', queryParams, {
-        headers: headers,
-    })
-    .then(function(response){
-        if(!response){
-            throw new Error(`Failed to fetch access token: ${response.status} ${response.statusText}`);
-        }
-        accessTokenData = response;
-        console.log("access token", accessTokenData.data);
-        return accessTokenData;
-        
-    })
-    .catch(function(error){
-        console.log("error in linkedin utils:" , error.message);
-    });
+    try{
+        const responseData = await axios.post('https://www.linkedin.com/oauth/v2/accessToken', queryParams, {
+            headers: headers,
+        });
+        console.log(responseData);
+        return responseData;
+    }catch(error){
+        return error.message;
+    }
+    
 
 }
