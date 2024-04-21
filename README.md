@@ -34,7 +34,24 @@ To begin working on your project, follow these steps:
    npm install
    ```
 
-4. Start the development server:
+4. Add your Firebase config values:
+
+   ```
+     1) Create a .env file in the root directory (do not just rename .env.sample)
+     2) In Firebase, go to the project you want to connect to
+     3) Go to "Project settings"
+     4) Scroll down to "Your apps" and select the app you want to connect to
+     5) Copy each value to your .env file
+     6) Prepend each key with REACT_APP
+   ```
+
+5. Add OpenAI Key to .env
+
+   ```
+   REACT_APP_OPENAI_API_KEY={Your OpenAI API key}
+   ```
+
+6. Start the development server:
 
    ```bash
    npm start
@@ -42,7 +59,7 @@ To begin working on your project, follow these steps:
 
 5. Open your web browser and navigate to `http://localhost:3000` to see your project running.
 
-Now you're ready to start building your project using the provided structure!
+7. Now you're ready to start building your project using the provided structure!
 
 ## Project Structure
 
