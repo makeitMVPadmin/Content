@@ -1,9 +1,6 @@
 import React from "react";
-import {Button} from "react-dom";
 import { useLinkedIn } from "react-linkedin-login-oauth2";
-import linkedin from "react-linkedin-login-oauth2/assets/linkedin.png";
 import { getAccessTokenData } from "./LinkedInUtils";  
-import queryString from 'query-string';
 
 const LinkedInPage = () =>{
 
