@@ -11,14 +11,14 @@ const LinkedInPage = () =>{
     clientId: process.env.REACT_APP_LINKEDIN_CLIENT_ID,
     redirectUri: `${window.location.origin}/linkedin/callback`,
     onSuccess: (code) => {
-      console.log(code);
+      console.log("AuthCode: ",code);
       setCode(code);
       setErrorMessage("");
     },
     scope: "w_member_social",
     onError: (error) => {
       console.log(error);
-      setCode("");
+      // setCode("");
       setErrorMessage(error.errorMessage);
     },
   });
@@ -27,21 +27,17 @@ const LinkedInPage = () =>{
   const [code, setCode] = React.useState("");
   const [errorMessage, setErrorMessage] = React.useState("");
   const [userName, setUserName] = React.useState("");
-  const [accessToken, setAccessToken] = React.useState("");
+  // const [accessToken, setAccessToken] = React.useState("");
 
 
   if (code){
-    console.log("if");
-
     const getAccessToken = async () => {
-      console.log("async");
       try {
         const accessTokenData = await getAccessTokenData(code);
-        console.log("hhhhhh", accessTokenData);
-        setAccessToken(accessTokenData.accessToken);
+        console.log("accessTokenData: ", accessTokenData);
+        // setAccessToken(accessTokenData.accessToken);
       }catch (error) {
         console.error("Error fetching access token:", error);
-
       }
     }
     getAccessToken();
@@ -57,9 +53,9 @@ const LinkedInPage = () =>{
         style={{ maxWidth: "180px", cursor: "pointer" }}
       />
 
-      {!code && <div>No code</div>}
-      {code && (
-        <div>
+      {/* {!code && <div>No code</div>} */}
+      {/* {code && ( */}
+        {/* <div>
           <div>Authenticated: Authorization Code: {code}</div>
           <div>
             Follow{" "}
@@ -75,10 +71,10 @@ const LinkedInPage = () =>{
           <div>
             UserName = {userName}
           </div>
-        </div>
-      )}
-      {!accessToken && <div>No accessToken</div>}
-      {accessToken && <div>Access token: {accessToken}</div>}
+        </div> */}
+      {/* )} */}
+      {/* {!accessToken && <div>No accessToken</div>} */}
+      {/* {accessToken && <div>Access token: {accessToken}</div>} */}
       {errorMessage && <div>{errorMessage}</div>}
     </div>
   );

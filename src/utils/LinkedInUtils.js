@@ -5,8 +5,6 @@ import { useEffect } from 'react';
 
 
 export async function getAccessTokenData(authCode){
-    // console.log("getaccesstoken:" ,authCode);
-    let accessTokenData = '';
     const queryParams  = queryString.stringify({
         grant_type: 'authorization_code',
         code: authCode,
@@ -18,20 +16,14 @@ export async function getAccessTokenData(authCode){
      const headers = {
         'Content-Type': 'application/x-www-form-urlencoded',
      }
-
-    // console.log("client_id:", process.env.REACT_APP_LINKEDIN_CLIENT_ID,
-    //     "client_secret: ", process.env.REACT_APP_LINKEDIN_CLIENT_SECRET,)
-    // console.log("query", queryParams);
     
     try{
         const responseData = await axios.post('https://www.linkedin.com/oauth/v2/accessToken', queryParams, {
             headers: headers,
         });
-        console.log(responseData);
         return responseData;
     }catch(error){
         return error.message;
     }
     
-
 }
