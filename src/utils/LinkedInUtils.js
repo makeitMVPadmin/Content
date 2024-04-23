@@ -1,7 +1,5 @@
 import queryString from 'query-string';
 import axios from 'axios';
-import { AuthClient, RestliClient } from 'linkedin-api-client';
-import { useEffect } from 'react';
 
 // function that takes in Authorization code and returns the access token
 export async function getAccessTokenData(authCode){
@@ -35,5 +33,5 @@ export async function getMemberDetails(accessToken){
 
 //  function that takes in access token, content and posts content to the linkedin
 export async function postContentToLinkedIn(accessToken, content){
-    
+
 }
