@@ -3,6 +3,19 @@ import axios from 'axios';
 
 
 // axios function format : 
+    // let config = {
+    //     method: 'post',
+    //     url: 'https:',
+    //     queryparams,
+    //     headers: { 
+    //       'Content-Type': ' application/json', 
+    //       'X-Restli-Protocol-Version': ' 2.0.0', 
+    //       'Authorization': `Bearer ${accessToken}`, 
+    //     },
+    //     data : data
+    //   };
+
+
 // function that takes in Authorization code and returns the access token
 export async function getAccessTokenData(authCode){
     const queryParams  = queryString.stringify({
@@ -60,7 +73,7 @@ export async function getMemberDetails(accessToken){
 }
 
 
-//  function that takes in access token, content and posts content to the linkedin
+//  function that takes in access token, memberDetails, content and posts content to the linkedin
 export async function postContentToLinkedIn(accessToken, memberDetails, content){
     const headers = {
         Authorization: `Bearer ${accessToken}`,
@@ -84,7 +97,8 @@ export async function postContentToLinkedIn(accessToken, memberDetails, content)
       };
 
     try{
-        const postContent = await axios.post('https://cors-anywhere.herokuapp.com/https://api.linkedin.com/v2/ugcPosts', data,
+        const postContent = await axios.post('https://cors-anywhere.herokuapp.com/https://api.linkedin.com/v2/ugcPosts', 
+            data,
             {
                 headers:headers,
             });
@@ -93,6 +107,4 @@ export async function postContentToLinkedIn(accessToken, memberDetails, content)
     }catch(error){
         return error.message;
     }
-
-    
 }
