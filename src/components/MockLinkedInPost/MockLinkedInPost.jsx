@@ -14,7 +14,7 @@ const MockLinkedInPost = () => {
     "Post text here. There will be post text here. post text here post text here. A post will be here. Post text here A post goes here. Post text here post text here post text here. There will be post text here ";
 
   return (
-    <div className="post-container">
+    <div id="post">
       <div className="author">
         <FaUserCircle size="50" color="lightgray" />
         <div className="author-info">
@@ -29,25 +29,25 @@ const MockLinkedInPost = () => {
         className="post-image"
       />
       <div className="post-interactions">
-        <div className="post-interaction">
+        <div className="interaction">
           <FaThumbsUp color="dodgerblue" /> 100
         </div>
-        <div className="post-interaction">20 comments</div>
+        <div className="interaction">20 comments</div>
       </div>
       <div className="post-actions">
-        <div className="post-action">
+        <div className="action">
           <FaThumbsUp />
           <span>Like</span>
         </div>
-        <div className="post-action">
+        <div className="action">
           <FaComment />
           <span>Comment</span>
         </div>
-        <div className="post-action">
+        <div className="action">
           <FaShare />
           <span>Share</span>
         </div>
-        <div className="post-action">
+        <div className="action">
           <FaPaperPlane /> <span>Send</span>
         </div>
       </div>

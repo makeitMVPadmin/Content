@@ -1,4 +1,4 @@
-.post-container {
+#post {
   border: 1px solid lightgray;
   width: fit-content;
   font-family: "Inter", sans-serif;
@@ -49,7 +49,7 @@
   padding: 5px;
 }
 
-.post-interaction {
+.interaction {
   padding: 5px;
 }
 
@@ -60,7 +60,7 @@
   border-top: 1px solid lightgray;
 }
 
-.post-action {
+.action {
   color: gray;
   display: flex;
   justify-content: center;
