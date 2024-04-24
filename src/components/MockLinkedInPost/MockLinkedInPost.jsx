@@ -7,11 +7,11 @@ import {
   FaPaperPlane,
 } from "react-icons/fa";
 
-const MockLinkedInPost = () => {
+const MockLinkedInPost = ({ previewText }) => {
   // this component will be added to ReviewTab & wrapped around the previewText box
   // placeholder text
-  const previewText =
-    "Post text here. There will be post text here. post text here post text here. A post will be here. Post text here A post goes here. Post text here post text here post text here. There will be post text here ";
+  // const previewText =
+  //   "Post text here. There will be post text here. post text here post text here. A post will be here. Post text here A post goes here. Post text here post text here post text here. There will be post text here ";
 
   return (
     <div id="post">

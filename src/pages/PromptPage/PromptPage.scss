@@ -5,6 +5,32 @@
   height: 100vh;
   width: 100vw;
 
+  &__navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 50%;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: lightgray;
+  }
+
+  &__navbar-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px;
+
+    &__active {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      padding: 10px;
+      border-bottom: 8px solid rgb(58, 58, 58);
+    }
+  }
+
   &__input-container {
     flex: 1;
     display: flex;
