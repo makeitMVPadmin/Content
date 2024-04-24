@@ -1,6 +1,6 @@
 import React from "react";
 import { useLinkedIn } from "react-linkedin-login-oauth2";
-import { getAccessTokenData } from "./LinkedInUtils";  
+import { getAccessTokenData, getMemberDetails } from "./LinkedInUtils";  
 
 const LinkedInPage = () =>{
 
@@ -8,12 +8,12 @@ const LinkedInPage = () =>{
   const{ linkedInLogin } = useLinkedIn({
     clientId: process.env.REACT_APP_LINKEDIN_CLIENT_ID,
     redirectUri: `${window.location.origin}/linkedin/callback`,
-    onSuccess: (code) => {
-      console.log("AuthCode: ",code);
-      setCode(code);
+    onSuccess: (authCode) => {
+      console.log("AuthCode: ",authCode);
+      setAuthCode(authCode);
       setErrorMessage("");
     },
-    scope: "w_member_social",
+    scope: ["w_member_social","openid","profile","email"],
     onError: (error) => {
       console.log(error);
       // setCode("");
@@ -22,28 +22,31 @@ const LinkedInPage = () =>{
   });
 
 
-  const [code, setCode] = React.useState("");
+  const [authCode, setAuthCode] = React.useState("");
   const [errorMessage, setErrorMessage] = React.useState("");
-  const [userName, setUserName] = React.useState("");
-  let accessToken = '';
+  let accessTokenData;
 
 
-  if (code){
+  if (authCode){
+    // get the user access token from linkedin api
     const getAccessToken = async () => {
       try {
-        const accessTokenData = await getAccessTokenData(code);
+        accessTokenData = await getAccessTokenData(authCode);
         console.log("accessTokenData: ", accessTokenData);
-        // setAccessToken(accessTokenData.accessToken);
-        accessToken = accessTokenData.accessToken;
+        if (accessTokenData){
+          const memberDetails = await getMemberDetails(accessTokenData.data.access_token);
+          console.log("Member Details: ", memberDetails);
+        }
+
       }catch (error) {
         console.error("Error fetching access token:", error);
       }
     }
     getAccessToken();
   }
-  if(accessToken !== ''){
-    console.log("Accesstoken", accessToken);
 
+  if(accessTokenData){
+    console.log("Accesstoken", accessTokenData);
   }
 
 
