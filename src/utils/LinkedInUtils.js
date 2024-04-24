@@ -19,7 +19,12 @@ export async function getAccessTokenData(authCode){
         const responseData = await axios.post('https://www.linkedin.com/oauth/v2/accessToken', queryParams, {
             headers: headers,
         });
-        return responseData;
+        console.log("access token: ",responseData.data);
+        let memberDetails = await getMemberDetails(responseData.data.access_token);
+        if (memberDetails){
+            console.log(memberDetails);
+        }
+        // return responseData;
     }catch(error){
         return error.message;
     }
@@ -28,10 +33,18 @@ export async function getAccessTokenData(authCode){
 
 // function that takes in access token and return the member details
 export async function getMemberDetails(accessToken){
-
-}
-
-//  function that takes in access token, content and posts content to the linkedin
-export async function postContentToLinkedIn(accessToken, content){
-
+    const headers = {
+        Authorization: `Bearer ${accessToken}`,
+        "Access-Control-Allow-Origin": "*",
+    }
+    console.log(headers);
+    
+    try{
+        const memberDetails = await axios.get('https://cors-anywhere.herokuapp.com/https://api.linkedin.com/v2/userinfo',{
+            headers: headers,
+        });
+        return memberDetails;
+    }catch(error){
+        return error.message;
+    }
 }
