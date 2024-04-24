@@ -36,19 +36,19 @@ const MockLinkedInPost = () => {
       </div>
       <div className="post-actions">
         <div className="action">
-          <FaThumbsUp />
+          <FaThumbsUp size="20" />
           <span>Like</span>
         </div>
         <div className="action">
-          <FaComment />
+          <FaComment size="20" />
           <span>Comment</span>
         </div>
         <div className="action">
-          <FaShare />
-          <span>Share</span>
+          <FaShare size="20" />
+          <span>Repost</span>
         </div>
         <div className="action">
-          <FaPaperPlane /> <span>Send</span>
+          <FaPaperPlane size="20" /> <span>Send</span>
         </div>
       </div>
     </div>

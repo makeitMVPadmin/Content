@@ -56,7 +56,7 @@
 .post-actions {
   display: flex;
   justify-content: space-evenly;
-  padding: 6px;
+  padding: 10px;
   border-top: 1px solid lightgray;
 }
 
@@ -64,6 +64,7 @@
   color: gray;
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 10px;
 }
 
