@@ -1,5 +1,7 @@
 import queryString from 'query-string';
 import axios from 'axios';
+import React from "react";
+import { useLinkedIn } from "react-linkedin-login-oauth2";
 
 
 // axios function format : 
@@ -15,6 +17,27 @@ import axios from 'axios';
     //     data : data
     //   };
 
+
+ // get the user authorization token from linkedin login
+ export const useLinkedInlogin = () =>{
+    const [errorMessage, setErrorMessage] = React.useState("");
+    const [successMessage, setsuccessMessage] = React.useState("");
+
+    const { linkedInLogin } = useLinkedIn({
+        clientId: process.env.REACT_APP_LINKEDIN_CLIENT_ID,
+        redirectUri: `${window.location.origin}/linkedin/callback`,
+        onSuccess: (authCode) => {
+            const accessTokenData = getAccessTokenData(authCode);
+            setErrorMessage("");
+        },
+        scope: ["w_member_social","openid","profile","email"],
+        onError: (error) => {
+            setErrorMessage(error.errorMessage);
+        },
+    });
+
+    return{linkedInLogin, errorMessage, successMessage};
+ };
 
 // function that takes in Authorization code and returns the access token
 export async function getAccessTokenData(authCode){
@@ -36,10 +59,8 @@ export async function getAccessTokenData(authCode){
             {
                 headers: headers,
             });
-        console.log("access token: ",responseData.data);
         let memberDetails = await getMemberDetails(responseData.data.access_token);
 
-        // return responseData;
     }catch(error){
         return error.message;
     }
@@ -62,11 +83,8 @@ export async function getMemberDetails(accessToken){
         var content = "This is a test 1423. Postesd using LinkedIn API";
         
         if(memberDetails){
-            console.log("memberdetails:", memberDetails.data.sub);
-            let postContent = await postContentToLinkedIn(accessToken, memberDetails, content);
-            console.log("postcontent: ", postContent);
+            const postContent = await postContentToLinkedIn(accessToken, memberDetails, content);
         }
-        return memberDetails;
     }catch(error){
         return error.message;
     }
@@ -102,8 +120,7 @@ export async function postContentToLinkedIn(accessToken, memberDetails, content)
             {
                 headers:headers,
             });
-            console.log("postcontent:",postContent);
-        return postContent;
+
     }catch(error){
         return error.message;
     }
