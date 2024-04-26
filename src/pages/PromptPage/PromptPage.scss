@@ -72,4 +72,13 @@
     height: 300px;
     overflow-y: scroll;
   }
+
+  &__sub-label {
+    background-color: gray;
+    border-radius: 5px;
+    padding: 5px 15px;
+    margin: 10px 0 10px 0;
+    align-self: flex-start;
+  }
+
 }

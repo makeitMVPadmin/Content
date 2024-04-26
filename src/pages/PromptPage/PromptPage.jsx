@@ -25,7 +25,6 @@ const PromptPage = () => {
               setPreviewText={setPreviewText}
             />
           </div>
-
         )}
         {activeTab === "review" && (
           <ReviewPost
