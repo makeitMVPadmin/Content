@@ -1,9 +1,10 @@
 .promptpage {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
   height: 100vh;
   width: 100vw;
+
 
   &__navbar {
     display: flex;
@@ -31,12 +32,16 @@
     }
   }
 
+  &__container {
+    background-color: lightgray;
+    width: 50vw;
+  }
+
   &__input-container {
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
   }
 
   &__preview-container {

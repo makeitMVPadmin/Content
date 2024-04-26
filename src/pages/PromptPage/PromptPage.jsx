@@ -15,14 +15,17 @@ const PromptPage = () => {
 
   const renderActiveTab = () => {
     return (
-      <div className="promptpage">
+      <>
         {activeTab === "edit" && (
-          <EditPost
-            inputText={inputText}
-            handleInputChange={handleInputChange}
-            setActivePage={setActiveTab}
-            setPreviewText={setPreviewText}
-          />
+          <div className="promptpage__container">
+            <EditPost
+              inputText={inputText}
+              handleInputChange={handleInputChange}
+              setActivePage={setActiveTab}
+              setPreviewText={setPreviewText}
+            />
+          </div>
+
         )}
         {activeTab === "review" && (
           <ReviewPost
@@ -31,15 +34,15 @@ const PromptPage = () => {
             setActivePage={setActiveTab}
           />
         )}
-      </div>
+      </>
     );
   };
 
   return (
-    <>
+    <div className="promptpage">
       <PromptPageTabs activeTab={activeTab} setActiveTab={setActiveTab} />
       {renderActiveTab()}
-    </>
+    </div>
   );
 };
 

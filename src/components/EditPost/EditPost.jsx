@@ -1,6 +1,7 @@
 import Button from "../Button/Button";
 import InputBox from "../InputBox/InputBox";
 import { getResponseContent } from "../../utils/openAIcall";
+import PromptHeader from "../PromptHeader/PromptHeader";
 
 const requestObj = {
   messages: [
@@ -56,12 +57,14 @@ const EditPost = ({
 
   return (
     <div className="promptpage__input-container">
+      <PromptHeader headerText={"Content"} />
       <InputBox
         value={inputText}
         onChange={handleInputChange}
         placeholder="Help me write a professional sounding post about my upcoming community event."
         className="promptpage__input-box"
       />
+      <PromptHeader headerText={"Use CommitAI To Write Content"} />
       <Button className="generate" onClick={handleGenerateButtonClick}>
         Generate
       </Button>
