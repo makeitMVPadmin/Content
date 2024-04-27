@@ -1,7 +1,6 @@
 import "./PromptPage.scss";
 import { useState } from "react";
 import EditPost from "../../components/EditPost/EditPost";
-import ReviewPost from "../../components/ReviewPost/ReviewPost";
 import PromptPageTabs from "../../components/PromptPageTabs/PromptPageTabs";
 
 const PromptPage = () => {
@@ -28,11 +27,8 @@ const PromptPage = () => {
           </div>
         )}
         {activeTab === "review" && (
-          <ReviewPost
-            previewText={previewText}
-            setPreviewText={setPreviewText}
-            setActivePage={setActiveTab}
-          />
+
+          <div>Render Eileen's Linked In mock up here</div>
         )}
       </>
     );
@@ -41,19 +37,8 @@ const PromptPage = () => {
   return (
     <div className="promptpage-container">
       <div className="promptpage">
-        {/* <PromptPageTabs activeTab={activeTab} setActiveTab={setActiveTab} />
-        {renderActiveTab()} */}
         <PromptPageTabs activeTab={activeTab} setActiveTab={setActiveTab} />
-        <div className="promptpage__container">
-          <EditPost
-            inputText={inputText}
-            handleInputChange={handleInputChange}
-            setActivePage={setActiveTab}
-            setPreviewText={setPreviewText}
-            previewText={previewText}
-          />
-        </div>
-
+        {renderActiveTab()}
       </div>
     </div>
   );
