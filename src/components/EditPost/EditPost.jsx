@@ -75,6 +75,16 @@ const EditPost = ({
           className="promptpage__input-box"
           labelVal="Give AI specific instructions for your content"
         />
+        <h4>Output size</h4>
+        {/* this will need to be within form, along with everything else */}
+        <div className="promptpage__radio-selection">
+          <input type="radio" id="small" name="output-size" value="small"></input>
+          <label for="small">Small</label><br></br>
+          <input type="radio" id="med" name="output-size" value="med"></input>
+          <label for="med">Medium</label><br></br>
+          <input type="radio" id="large" name="output-size" value="large"></input>
+          <label for="large">Large</label><br></br>
+        </div>
       </div>
       <Button className="promptpage__generate-btn" onClick={handleGenerateButtonClick}>
         Generate Social Post
