@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import InputBox from "../InputBox/InputBox";
 import PreviewBox from "../PreviewBox/PreviewBox";
 import Button from "../Button/Button";
+import { useLinkedInlogin } from "../../utils/linkedInApi";  
 
-const ReviewPost = ({ previewText, setPreviewText, setActivePage }) => {
+
+const ReviewPost = ({ inputText, previewText, setPreviewText, setActivePage }) => {
   const [isEditing, setIsEditing] = useState(false);
 
   const handleBackClick = () => {
@@ -33,11 +35,18 @@ const ReviewPost = ({ previewText, setPreviewText, setActivePage }) => {
   // placeholder to handle LinkedIn posting
   const handlePostButtonClick = () => {};
 
+  const content = {
+    prompts: [inputText],
+    responses: [previewText],
+  };
+
+  const { linkedInLogin, errorMessage } = useLinkedInlogin(content);
+
   return (
     <div className="promptpage__preview-container">
       <button onClick={handleBackClick}>Back</button>
       {previewContent()}
-      <Button className="post" onClick={handlePostButtonClick}>
+      <Button className="post" onClick={linkedInLogin}>
         Post
       </Button>
     </div>

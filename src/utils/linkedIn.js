@@ -3,11 +3,11 @@ import { handleLinkedInPostButton, useLinkedInlogin } from "./linkedInApi";
 const LinkedInPage = () =>{
 
   var time = new Date();
-  const prompt = "This is a test Prompt. Posted using LinkedIn API. Date: "+time.toTimeString();
+  const promptText = "This is a test promptText. Posted using LinkedIn API. Date: "+time.toTimeString();
   const response = "This is a test Response. Posted using LinkedIn API. Date: "+time.toTimeString();
 
   const content = {
-    prompts: [prompt],
+    prompts: [promptText],
     responses: [response],
   };
   const { linkedInLogin, errorMessage } = useLinkedInlogin(content);

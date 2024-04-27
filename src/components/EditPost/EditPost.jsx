@@ -26,6 +26,7 @@ const EditPost = ({
 }) => {
   const getOpenAIResponse = async () => {
     setPreviewText("Loading...");
+
     requestObj.messages[1].content = inputText;
 
     try {
