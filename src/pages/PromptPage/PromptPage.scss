@@ -125,7 +125,7 @@
     font-size: 1rem;
   }
 
-  &__radio-selection {
+  &__choice-selection {
     display: flex;
     width: 100%;
     justify-content: flex-start;
@@ -133,8 +133,17 @@
     font-size: 1rem;
 
   }
-  &__radio-selection > * {
+  &__choice-selection > * {
     margin-left: 15px;
+    margin-right: 15px;
+  }
+
+  &__post-btn {
+    background-color: $MVP-Yellow;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
   }
 
 }

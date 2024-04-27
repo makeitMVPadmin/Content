@@ -77,7 +77,7 @@ const EditPost = ({
         />
         <h4>Output size</h4>
         {/* this will need to be within form, along with everything else */}
-        <div className="promptpage__radio-selection">
+        <div className="promptpage__choice-selection">
           <input type="radio" id="small" name="output-size" value="small"></input>
           <label for="small">Small</label><br></br>
           <input type="radio" id="med" name="output-size" value="med"></input>
@@ -97,6 +97,16 @@ const EditPost = ({
         // setActivePage={setActiveTab}
         />
       </div>
+      <PromptHeader headerText={"Publishing Options"} />
+      <div className="promptpage__choice-selection">
+        <Button className="promptpage__generate-btn">
+          Save Draft
+        </Button>
+        <Button className="promptpage__post-btn">
+          Post
+        </Button>
+      </div>
+
     </div>
   );
 };
