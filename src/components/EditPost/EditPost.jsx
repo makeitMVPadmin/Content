@@ -57,7 +57,7 @@ const EditPost = ({
 
   return (
     <div className="promptpage__input-container">
-      <PromptHeader headerText={"Content"} />
+      <PromptHeader headerText={"CommitAI Content Generator"} />
       <InputBox
         value={inputText}
         onChange={handleInputChange}
