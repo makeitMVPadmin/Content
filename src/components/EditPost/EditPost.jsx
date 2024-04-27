@@ -58,20 +58,21 @@ const EditPost = ({
   return (
     <div className="promptpage__input-container">
       <PromptHeader headerText={"CommitAI Content Generator"} />
-      <InputBox
-        value={inputText}
-        onChange={handleInputChange}
-        placeholder="Help me write a professional sounding post about my upcoming community event."
-        className="promptpage__input-box"
-      />
-      <PromptHeader headerText={"Use CommitAI To Write Content"} />
-      <div className="promptpage__sub-label"><h5>Tone of voice</h5></div>
+      <h4>Mood</h4>
       <select>
         <option>Tone1</option>
         <option>Tone2</option>
         <option>Tone3</option>
       </select>
-      <div className="promptpage__sub-label"><h5>What do you want to share?</h5></div>
+      <h4>What do you want to share?</h4>
+      <InputBox
+        value={inputText}
+        onChange={handleInputChange}
+        placeholder="Help me write a professional sounding post about my upcoming community event."
+        className="promptpage__input-box"
+        labelVal="Give AI specific instructions for your content"
+      />
+      <PromptHeader headerText={"Use CommitAI To Write Content"} />
 
       <Button className="generate" onClick={handleGenerateButtonClick}>
         Generate
