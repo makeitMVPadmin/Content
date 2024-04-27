@@ -2,6 +2,7 @@ import "./PromptPage.scss";
 import { useState } from "react";
 import EditPost from "../../components/EditPost/EditPost";
 import PromptPageTabs from "../../components/PromptPageTabs/PromptPageTabs";
+import Navbar from "../../components/Navbar/Navbar";
 
 const PromptPage = () => {
   const [inputText, setInputText] = useState("");
@@ -37,6 +38,7 @@ const PromptPage = () => {
   return (
     <div className="promptpage-container">
       <div className="promptpage">
+        <Navbar />
         <PromptPageTabs activeTab={activeTab} setActiveTab={setActiveTab} />
         {renderActiveTab()}
       </div>
