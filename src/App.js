@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./main.js"
 import PromptPage from "./pages/PromptPage/PromptPage";
-import LinkedInPage from "./utils/linkedInPage";
+import LinkedInPage from "./utils/linkedIn";
 import { LinkedInCallback } from "react-linkedin-login-oauth2";
 
 function App() {

@@ -2,6 +2,7 @@ import queryString from 'query-string';
 import axios from 'axios';
 import React from "react";
 import { useLinkedIn } from "react-linkedin-login-oauth2";
+import { addMessage } from './firebaseMessages';
 
 
 // axios function format : 
@@ -59,7 +60,7 @@ export async function getAccessTokenData(authCode){
             {
                 headers: headers,
             });
-        let memberDetails = await getMemberDetails(responseData.data.access_token);
+        const memberDetails = await getMemberDetails(responseData.data.access_token);
         return memberDetails;
     }catch(error){
         return error.message;
@@ -122,6 +123,16 @@ export async function postContentToLinkedIn(accessToken, memberDetails, content)
             {
                 headers:headers,
             });
+
+            //if the message is posted to the LinkedIn, add it to the Firebase collection
+            var message = {
+                platform:"LinkedIn",
+                posted:true,
+                prompts:[],
+                responses:[content],
+                userID:"", 
+            }
+            const id = await addMessage(message);
             return postContent;
 
     }catch(error){
