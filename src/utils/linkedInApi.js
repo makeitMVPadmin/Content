@@ -20,7 +20,7 @@ import { addMessage } from './firebaseMessages';
 
 
  // get the user authorization token from linkedin login
- export const useLinkedInlogin = () =>{
+ export const useLinkedInlogin = (content) =>{
     const [errorMessage, setErrorMessage] = React.useState("");
     const [successMessage, setsuccessMessage] = React.useState("");
 
@@ -28,20 +28,20 @@ import { addMessage } from './firebaseMessages';
         clientId: process.env.REACT_APP_LINKEDIN_CLIENT_ID,
         redirectUri: `${window.location.origin}/linkedin/callback`,
         onSuccess: (authCode) => {
-            const accessTokenData = getAccessTokenData(authCode);
-            // setErrorMessage("");
+            const accessTokenData = getAccessTokenData(authCode, content);
+            setErrorMessage("");
         },
         scope: ["w_member_social","openid","profile","email"],
         onError: (error) => {
-            // setErrorMessage(error.errorMessage);
+            setErrorMessage(error.errorMessage);
         },
     });
 
     return{linkedInLogin, errorMessage, successMessage};
- };
+};
 
 // function that takes in Authorization code and returns the access token
-export async function getAccessTokenData(authCode){
+export async function getAccessTokenData(authCode, content){
     const queryParams  = queryString.stringify({
         grant_type: 'authorization_code',
         code: authCode,
@@ -60,7 +60,7 @@ export async function getAccessTokenData(authCode){
             {
                 headers: headers,
             });
-        const memberDetails = await getMemberDetails(responseData.data.access_token);
+        const memberDetails = await getMemberDetails(responseData.data.access_token, content);
         return memberDetails;
     }catch(error){
         return error.message;
@@ -69,7 +69,7 @@ export async function getAccessTokenData(authCode){
 }
 
 // function that takes in access token and return the member details
-export async function getMemberDetails(accessToken){
+export async function getMemberDetails(accessToken, content){
     const headers = {
         Authorization: `Bearer ${accessToken}`,
         "Access-Control-Allow-Origin": "*",
@@ -81,8 +81,8 @@ export async function getMemberDetails(accessToken){
                 headers: headers,
             });
 
-        var time = new Date();
-        const content = "This is a test. Posted using LinkedIn API. Date: "+time.toTimeString();
+        // var time = new Date();
+        // const content = "This is a test. Posted using LinkedIn API. Date: "+time.toTimeString();
         
         if(memberDetails){
             const postContent = await postContentToLinkedIn(accessToken, memberDetails, content);
@@ -107,7 +107,7 @@ export async function postContentToLinkedIn(accessToken, memberDetails, content)
         "specificContent": {
           "com.linkedin.ugc.ShareContent": {
             "shareCommentary": {
-              "text":`${content}`
+              "text":`${content.responses}`
             },
             "shareMediaCategory": "NONE"
           }
@@ -128,8 +128,8 @@ export async function postContentToLinkedIn(accessToken, memberDetails, content)
             var message = {
                 platform:"LinkedIn",
                 posted:true,
-                prompts:[],
-                responses:[content],
+                prompts:content.prompts,
+                responses:content.responses,
                 userID:"", 
             }
             const id = await addMessage(message);
@@ -139,3 +139,4 @@ export async function postContentToLinkedIn(accessToken, memberDetails, content)
         return error.message;
     }
 }
+

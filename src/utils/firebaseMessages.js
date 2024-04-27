@@ -27,6 +27,7 @@ async function addMessage(message){
       const { id } = await addDoc(collection(db, MESSAGES_COLLECTION_NAME), message);
       return id;
     } catch (err) {
+      console.log(err);
       throw new Error('Error adding message: ' + err.message);
     }
   }
