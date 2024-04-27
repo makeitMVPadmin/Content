@@ -51,11 +51,15 @@ const EditPost = ({
   const handleGenerateButtonClick = () => {
     if (inputText) {
       getOpenAIResponse();
-      setActivePage("review");
+      // setActivePage("review");
     } else {
       alert("Please add input!");
     }
   };
+
+  const handlePostClick = () => {
+    setActivePage("review");
+  }
 
   return (
     <div className="promptpage__input-container">
@@ -102,7 +106,7 @@ const EditPost = ({
         <Button className="promptpage__generate-btn">
           Save Draft
         </Button>
-        <Button className="promptpage__post-btn">
+        <Button className="promptpage__post-btn" onClick={handlePostClick}>
           Post
         </Button>
       </div>
