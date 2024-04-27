@@ -41,8 +41,19 @@ const PromptPage = () => {
   return (
     <div className="promptpage-container">
       <div className="promptpage">
+        {/* <PromptPageTabs activeTab={activeTab} setActiveTab={setActiveTab} />
+        {renderActiveTab()} */}
         <PromptPageTabs activeTab={activeTab} setActiveTab={setActiveTab} />
-        {renderActiveTab()}
+        <div className="promptpage__container">
+          <EditPost
+            inputText={inputText}
+            handleInputChange={handleInputChange}
+            setActivePage={setActiveTab}
+            setPreviewText={setPreviewText}
+            previewText={previewText}
+          />
+        </div>
+
       </div>
     </div>
   );
