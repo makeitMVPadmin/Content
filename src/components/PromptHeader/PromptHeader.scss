@@ -1,5 +1,7 @@
-.prompt-header {
-  background-color: gray;
-  width: 100%;
+@import '../../styles/partials/variables.scss';
 
+.prompt-header {
+  background-color:$Powder-Blue;
+  border: 2px solid black;
+  width: 100%;
 }
