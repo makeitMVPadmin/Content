@@ -13,6 +13,10 @@ const PromptPage = () => {
     setInputText(e.target.value);
   };
 
+  const handleBackClick = () => {
+    setActiveTab("edit");
+  };
+
   const renderActiveTab = () => {
     return (
       <>
@@ -28,8 +32,11 @@ const PromptPage = () => {
           </div>
         )}
         {activeTab === "review" && (
+          <div className="promptpage_container">
+            <div>Render Eileen's Linked In mock up here</div>
+            <button onClick={handleBackClick}>Back</button>
+          </div>
 
-          <div>Render Eileen's Linked In mock up here</div>
         )}
       </>
     );
