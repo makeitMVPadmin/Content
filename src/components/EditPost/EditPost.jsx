@@ -2,6 +2,7 @@ import Button from "../Button/Button";
 import InputBox from "../InputBox/InputBox";
 import { getResponseContent } from "../../utils/openAIcall";
 import PromptHeader from "../PromptHeader/PromptHeader";
+import ReviewPost from "../ReviewPost/ReviewPost";
 
 const requestObj = {
   messages: [
@@ -24,6 +25,7 @@ const EditPost = ({
   handleInputChange,
   setPreviewText,
   setActivePage,
+  previewText
 }) => {
   const getOpenAIResponse = async () => {
     setPreviewText("Loading...");
@@ -58,25 +60,31 @@ const EditPost = ({
   return (
     <div className="promptpage__input-container">
       <PromptHeader headerText={"CommitAI Content Generator"} />
-      <h4>Mood</h4>
-      <select>
-        <option>Tone1</option>
-        <option>Tone2</option>
-        <option>Tone3</option>
-      </select>
-      <h4>What do you want to share?</h4>
-      <InputBox
-        value={inputText}
-        onChange={handleInputChange}
-        placeholder="Help me write a professional sounding post about my upcoming community event."
-        className="promptpage__input-box"
-        labelVal="Give AI specific instructions for your content"
-      />
-      <PromptHeader headerText={"Use CommitAI To Write Content"} />
-
-      <Button className="generate" onClick={handleGenerateButtonClick}>
-        Generate
+      <div className="promptpage__sub-container">
+        <h4>Mood</h4>
+        <select>
+          <option>Tone1</option>
+          <option>Tone2</option>
+          <option>Tone3</option>
+        </select>
+        <h4>What do you want to share?</h4>
+        <InputBox
+          value={inputText}
+          onChange={handleInputChange}
+          placeholder="Help me write a professional sounding post about my upcoming community event."
+          className="promptpage__input-box"
+          labelVal="Give AI specific instructions for your content"
+        />
+      </div>
+      <Button className="promptpage__generate-btn" onClick={handleGenerateButtonClick}>
+        Generate Social Post
       </Button>
+      <PromptHeader headerText={"Content"} />
+      <ReviewPost
+        previewText={previewText}
+        setPreviewText={setPreviewText}
+      // setActivePage={setActiveTab}
+      />
     </div>
   );
 };

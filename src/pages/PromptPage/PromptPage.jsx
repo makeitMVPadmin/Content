@@ -23,6 +23,7 @@ const PromptPage = () => {
               handleInputChange={handleInputChange}
               setActivePage={setActiveTab}
               setPreviewText={setPreviewText}
+              previewText={previewText}
             />
           </div>
         )}

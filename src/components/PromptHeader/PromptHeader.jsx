@@ -4,7 +4,7 @@ const PromptHeader = ({ headerText }) => {
 
   return (
     <div className="prompt-header">
-      <h4>{headerText}</h4>
+      <h5>{headerText}</h5>
     </div>)
 }
 
