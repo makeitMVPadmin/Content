@@ -80,11 +80,13 @@ const EditPost = ({
         Generate Social Post
       </Button>
       <PromptHeader headerText={"Content"} />
-      <ReviewPost
-        previewText={previewText}
-        setPreviewText={setPreviewText}
-      // setActivePage={setActiveTab}
-      />
+      <div className="promptpage__sub-container">
+        <ReviewPost
+          previewText={previewText}
+          setPreviewText={setPreviewText}
+        // setActivePage={setActiveTab}
+        />
+      </div>
     </div>
   );
 };
