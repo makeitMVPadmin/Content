@@ -5,6 +5,7 @@ import PromptPageTabs from "../../components/PromptPageTabs/PromptPageTabs";
 import Navbar from "../../components/Navbar/Navbar";
 import MockLinkedInPost from "../../components/MockLinkedInPost/MockLinkedInPost";
 import Button from "../../components/Button/Button";
+// import ReviewPost from "../../components/ReviewPost/ReviewPost";
 
 const PromptPage = () => {
   const [inputText, setInputText] = useState("");
@@ -63,3 +64,4 @@ const PromptPage = () => {
 };
 
 export default PromptPage;
+
