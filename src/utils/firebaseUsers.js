@@ -2,7 +2,10 @@ import { db } from '../Firebase/FirebaseConfig';
 import { collection, getDocs, doc, getDoc, setDoc, addDoc, deleteDoc } from 'firebase/firestore';
 
 const USERS_COLLECTION_NAME = 'Users';
+const MESSAGES_COLLECTION_NAME = 'Messages';
 
+
+// User DB functions start
 async function userExists(id) {
   const userRef = doc(db, USERS_COLLECTION_NAME, id);
   const userSnapshot = await getDoc(userRef);
@@ -74,5 +77,7 @@ async function deleteUser(id) {
     throw new Error('Error deleting user: ' + err.message);
   }
 }
+// User DB functions end
+
 
 export { getUsers, getUserById, addUser, updateUser, deleteUser };
