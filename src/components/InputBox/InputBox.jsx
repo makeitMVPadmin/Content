@@ -3,7 +3,7 @@ import React from "react";
 const InputBox = ({ value, className, onChange, placeholder, labelVal, ...rest }) => {
   return (
     <>
-      <label for="input-box"><p>{labelVal}</p></label>
+      <label htmlFor="input-box"><p>{labelVal}</p></label>
       <textarea
         id="input-box"
         name="input-box"
