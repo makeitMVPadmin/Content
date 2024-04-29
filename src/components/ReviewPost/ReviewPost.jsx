@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import InputBox from "../InputBox/InputBox";
 import PreviewBox from "../PreviewBox/PreviewBox";
+import Button from "../Button/Button";
+import MockLinkedInPost from "../MockLinkedInPost/MockLinkedInPost";
 
 const ReviewPost = ({ previewText, setPreviewText, setActivePage }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -29,7 +31,14 @@ const ReviewPost = ({ previewText, setPreviewText, setActivePage }) => {
 
   return (
     <div className="promptpage__preview-container">
-      {previewContent()}
+      <button onClick={handleBackClick}>Back</button>
+      <MockLinkedInPost previewText={previewText}>
+        {previewContent()}
+      </MockLinkedInPost>
+
+      <Button className="post" onClick={handlePostButtonClick}>
+        Post
+      </Button>
     </div>
   );
 };
