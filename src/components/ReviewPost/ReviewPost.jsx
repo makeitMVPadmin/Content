@@ -3,14 +3,12 @@ import InputBox from "../InputBox/InputBox";
 import PreviewBox from "../PreviewBox/PreviewBox";
 import Button from "../Button/Button";
 import { useLinkedInlogin } from "../../utils/linkedInApi";  
+import MockLinkedInPost from "../MockLinkedInPost/MockLinkedInPost";
 
 
 const ReviewPost = ({ inputText, previewText, setPreviewText, setActivePage }) => {
   const [isEditing, setIsEditing] = useState(false);
 
-  const handleBackClick = () => {
-    setActivePage("edit");
-  };
 
   const handleToggleEditing = () => {
     setIsEditing(!isEditing);
@@ -32,8 +30,6 @@ const ReviewPost = ({ inputText, previewText, setPreviewText, setActivePage }) =
     );
   };
 
-  // placeholder to handle LinkedIn posting
-  const handlePostButtonClick = () => {};
 
   const content = {
     prompts: [inputText],
@@ -45,8 +41,11 @@ const ReviewPost = ({ inputText, previewText, setPreviewText, setActivePage }) =
   return (
     <div className="promptpage__preview-container">
       <button onClick={handleBackClick}>Back</button>
-      {previewContent()}
-      <Button className="post" onClick={linkedInLogin}>
+      <MockLinkedInPost previewText={previewText}>
+        {previewContent()}
+      </MockLinkedInPost>
+
+      <Button className="post" onClick={handlePostButtonClick}>
         Post
       </Button>
     </div>

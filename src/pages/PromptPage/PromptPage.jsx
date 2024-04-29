@@ -1,8 +1,10 @@
 import "./PromptPage.scss";
 import { useState } from "react";
 import EditPost from "../../components/EditPost/EditPost";
-import ReviewPost from "../../components/ReviewPost/ReviewPost";
 import PromptPageTabs from "../../components/PromptPageTabs/PromptPageTabs";
+import Navbar from "../../components/Navbar/Navbar";
+import MockLinkedInPost from "../../components/MockLinkedInPost/MockLinkedInPost";
+import Button from "../../components/Button/Button";
 
 const PromptPage = () => {
   const [inputText, setInputText] = useState("");
@@ -13,34 +15,50 @@ const PromptPage = () => {
     setInputText(e.target.value);
   };
 
+  const handleBackClick = () => {
+    setActiveTab("edit");
+  };
+
+  const handleSubmitPostClick = () => {
+    // handle submission thru LinkedIn here
+  }
+
   const renderActiveTab = () => {
     return (
-      <div className="promptpage">
+      <>
         {activeTab === "edit" && (
-          <EditPost
-            inputText={inputText}
-            handleInputChange={handleInputChange}
-            setActivePage={setActiveTab}
-            setPreviewText={setPreviewText}
-          />
+          <div className="promptpage__container">
+            <EditPost
+              inputText={inputText}
+              handleInputChange={handleInputChange}
+              setActivePage={setActiveTab}
+              setPreviewText={setPreviewText}
+              previewText={previewText}
+            />
+          </div>
         )}
         {activeTab === "review" && (
-          <ReviewPost
-            inputText={inputText}
-            previewText={previewText}
-            setPreviewText={setPreviewText}
-            setActivePage={setActiveTab}
-          />
+          <div className="promptpage_container">
+            <button onClick={handleBackClick}>Back</button>
+            <MockLinkedInPost previewText={previewText}></MockLinkedInPost>
+            <Button className="promptpage__post-btn" onClick={handleSubmitPostClick}>
+              Post on LinkedIn
+            </Button>
+          </div>
+
         )}
-      </div>
+      </>
     );
   };
 
   return (
-    <>
-      <PromptPageTabs activeTab={activeTab} setActiveTab={setActiveTab} />
-      {renderActiveTab()}
-    </>
+    <div className="promptpage-container">
+      <div className="promptpage">
+        <Navbar />
+        <PromptPageTabs activeTab={activeTab} setActiveTab={setActiveTab} />
+        {renderActiveTab()}
+      </div>
+    </div>
   );
 };
 
