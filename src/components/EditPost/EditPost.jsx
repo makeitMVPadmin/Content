@@ -106,11 +106,11 @@ const EditPost = ({
         <Button className="promptpage__generate-btn">
           Save Draft
         </Button>
+        {/* will need to make this button disabled if no content in preview */}
         <Button className="promptpage__post-btn" onClick={handlePostClick}>
-          Post
+          Preview Post
         </Button>
       </div>
-
     </div>
   );
 };

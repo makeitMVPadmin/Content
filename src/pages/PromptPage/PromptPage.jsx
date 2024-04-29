@@ -4,6 +4,7 @@ import EditPost from "../../components/EditPost/EditPost";
 import PromptPageTabs from "../../components/PromptPageTabs/PromptPageTabs";
 import Navbar from "../../components/Navbar/Navbar";
 import MockLinkedInPost from "../../components/MockLinkedInPost/MockLinkedInPost";
+import Button from "../../components/Button/Button";
 
 const PromptPage = () => {
   const [inputText, setInputText] = useState("");
@@ -18,7 +19,9 @@ const PromptPage = () => {
     setActiveTab("edit");
   };
 
-  console.log(previewText)
+  const handleSubmitPostClick = () => {
+    // handle submission thru LinkedIn here
+  }
 
   const renderActiveTab = () => {
     return (
@@ -38,6 +41,9 @@ const PromptPage = () => {
           <div className="promptpage_container">
             <button onClick={handleBackClick}>Back</button>
             <MockLinkedInPost previewText={previewText}></MockLinkedInPost>
+            <Button className="promptpage__post-btn" onClick={handleSubmitPostClick}>
+              Post on LinkedIn
+            </Button>
           </div>
 
         )}
