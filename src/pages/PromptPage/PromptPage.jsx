@@ -3,6 +3,7 @@ import { useState } from "react";
 import EditPost from "../../components/EditPost/EditPost";
 import PromptPageTabs from "../../components/PromptPageTabs/PromptPageTabs";
 import Navbar from "../../components/Navbar/Navbar";
+import MockLinkedInPost from "../../components/MockLinkedInPost/MockLinkedInPost";
 
 const PromptPage = () => {
   const [inputText, setInputText] = useState("");
@@ -16,6 +17,8 @@ const PromptPage = () => {
   const handleBackClick = () => {
     setActiveTab("edit");
   };
+
+  console.log(previewText)
 
   const renderActiveTab = () => {
     return (
@@ -33,8 +36,8 @@ const PromptPage = () => {
         )}
         {activeTab === "review" && (
           <div className="promptpage_container">
-            <div>Render Eileen's Linked In mock up here</div>
             <button onClick={handleBackClick}>Back</button>
+            <MockLinkedInPost previewText={previewText}></MockLinkedInPost>
           </div>
 
         )}

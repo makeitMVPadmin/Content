@@ -1,0 +1,73 @@
+#post {
+  border: 1px solid lightgray;
+  width: fit-content;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  width: 400px;
+  border-radius: 5px;
+  margin: 20px;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.author-info {
+  display: flex;
+  flex-direction: column;
+  color: gray;
+  align-items: flex-start;
+  margin-left: 5px;
+}
+
+.author-name {
+  font-weight: 700;
+}
+
+.author-followers {
+  font-size: 14px;
+}
+
+.post-text {
+  text-wrap: wrap;
+  padding: 10px;
+}
+
+.post-image {
+  margin-top: 10px;
+  height: 250px;
+  width: 400px;
+}
+
+.post-interactions {
+  display: flex;
+  justify-content: space-between;
+  color: gray;
+  font-size: 12px;
+  padding: 5px;
+}
+
+.interaction {
+  padding: 5px;
+}
+
+.post-actions {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+  border-top: 1px solid lightgray;
+}
+
+.action {
+  color: gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.action > span {
+  margin-left: 3px;
+}
