@@ -40,7 +40,7 @@ const ReviewPost = ({ inputText, previewText, setPreviewText, setActivePage }) =
 
   return (
     <div className="promptpage__preview-container">
-      <button onClick={handleBackClick}>Back</button>
+      {/* <button onClick={handleBackClick}>Back</button> */}
       <MockLinkedInPost previewText={previewText}>
         {previewContent()}
       </MockLinkedInPost>
