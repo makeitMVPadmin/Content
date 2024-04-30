@@ -16,6 +16,7 @@ const EditPost = ({
 }) => {
 
   const [moodVal, setMoodVal] = useState("Professional");
+  const [tempVal, setTempVal] = useState(0.02);
 
   const requestObj = {
     messages: [
@@ -30,7 +31,7 @@ const EditPost = ({
       },
     ],
     model: "gpt-3.5-turbo",
-    temperature: 0.02,
+    temperature: tempVal,
   };
 
 
@@ -44,6 +45,7 @@ const EditPost = ({
 
       // need to parse JSON to return an object we can work with
       const parsedContent = JSON.parse(responseContent.content);
+
 
       // // If responseContent has no content, setAiResponseContent to error message
       setPreviewText(
@@ -59,7 +61,6 @@ const EditPost = ({
   const handleGenerateButtonClick = () => {
     if (inputText) {
       getOpenAIResponse();
-      // setActivePage("review");
     } else {
       alert("Please add input!");
     }
@@ -70,7 +71,12 @@ const EditPost = ({
   }
 
   const handleMoodSelect = (e) => {
-    setMoodVal(e.target.value)
+    setMoodVal(e.target.value);
+    if (e.target.value === "Silly") {
+      setTempVal(2.0);
+    } else {
+      setTempVal(0.02);
+    }
   }
 
   return (
