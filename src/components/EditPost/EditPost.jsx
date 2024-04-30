@@ -5,8 +5,6 @@ import PromptHeader from "../PromptHeader/PromptHeader";
 import ReviewPost from "../ReviewPost/ReviewPost";
 import { useState } from 'react';
 
-
-
 const EditPost = ({
   inputText,
   handleInputChange,
@@ -15,7 +13,7 @@ const EditPost = ({
   previewText
 }) => {
 
-  const [moodVal, setMoodVal] = useState("Professional");
+  const [moodVal, setMoodVal] = useState("professional");
   const [tempVal, setTempVal] = useState(0.02);
 
   const requestObj = {
@@ -23,7 +21,7 @@ const EditPost = ({
       {
         role: "system",
         content:
-          `You are a friendly assistant, that gives responses to a community organizer appropriate to LinkedIn in JSON format just post content between 200 and 2000 characters in length, no title. The key should be 'content'. Don't include any extra text outside of the post content itself, including hashtags. Don't say you will create the post, just give me the content. Please make the overall tone of your response ${moodVal}`,
+          `You are a friendly assistant, that gives responses to a community organizer appropriate to LinkedIn in JSON format just post content between 200 and 2000 characters in length, no title. The key should be 'content'. Don't include any extra text outside of the post content itself, including hashtags. Don't say you will create the post, just give me the content. Please make the overall tone of your response ${moodVal} in nature.`,
       },
       {
         role: "user",
@@ -33,8 +31,6 @@ const EditPost = ({
     model: "gpt-3.5-turbo",
     temperature: tempVal,
   };
-
-
 
   const getOpenAIResponse = async () => {
     setPreviewText("Loading...");
@@ -71,9 +67,10 @@ const EditPost = ({
   }
 
   const handleMoodSelect = (e) => {
-    setMoodVal(e.target.value);
+    setMoodVal(e.target.value.toLowerCase());
     if (e.target.value === "Silly") {
-      setTempVal(2.0);
+      //above 1.0 is unreliable, despite technically being possible up to 2.0
+      setTempVal(1.0);
     } else {
       setTempVal(0.02);
     }
@@ -116,7 +113,6 @@ const EditPost = ({
         <ReviewPost
           previewText={previewText}
           setPreviewText={setPreviewText}
-        // setActivePage={setActiveTab}
         />
       </div>
       <PromptHeader headerText={"Publishing Options"} />
