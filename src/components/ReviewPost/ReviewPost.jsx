@@ -45,7 +45,7 @@ const ReviewPost = ({ inputText, previewText, setPreviewText, setActivePage }) =
         {previewContent()}
       </MockLinkedInPost>
 
-      <Button className="post" onClick={handlePostButtonClick}>
+      <Button className="post" onClick={linkedInLogin}>
         Post
       </Button>
     </div>
