@@ -3,6 +3,7 @@ import InputBox from "../InputBox/InputBox";
 import { getResponseContent } from "../../utils/openAIcall";
 import PromptHeader from "../PromptHeader/PromptHeader";
 import ReviewPost from "../ReviewPost/ReviewPost";
+import { useState } from 'react';
 
 const requestObj = {
   messages: [
@@ -27,6 +28,9 @@ const EditPost = ({
   setActivePage,
   previewText
 }) => {
+
+  const [moodVal, setMoodVal] = useState("Professional");
+
   const getOpenAIResponse = async () => {
     setPreviewText("Loading...");
     requestObj.messages[1].content = inputText;
@@ -61,15 +65,19 @@ const EditPost = ({
     setActivePage("review");
   }
 
+  const handleMoodSelect = (e) => {
+    setMoodVal(e.target.value)
+  }
+
   return (
     <div className="promptpage__input-container">
       <PromptHeader headerText={"CommitAI Content Generator"} />
       <div className="promptpage__sub-container">
         <h4>Mood</h4>
-        <select>
-          <option>Tone1</option>
-          <option>Tone2</option>
-          <option>Tone3</option>
+        <select onChange={handleMoodSelect}>
+          <option>Professional</option>
+          <option>Silly</option>
+          <option>Humorous</option>
         </select>
         <h4>What do you want to share?</h4>
         <InputBox
