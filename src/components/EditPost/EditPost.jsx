@@ -5,21 +5,7 @@ import PromptHeader from "../PromptHeader/PromptHeader";
 import ReviewPost from "../ReviewPost/ReviewPost";
 import { useState } from 'react';
 
-const requestObj = {
-  messages: [
-    {
-      role: "system",
-      content:
-        "You are a friendly assistant, that gives responses to a community organizer appropriate to LinkedIn in JSON format just post content between 200 and 2000 characters in length, no title. The key should be 'content'. Don't include any extra text outside of the post content itself, including hashtags. Don't say you will create the post, just give me the content",
-    },
-    {
-      role: "user",
-      content: "",
-    },
-  ],
-  model: "gpt-3.5-turbo",
-  temperature: 0.02,
-};
+
 
 const EditPost = ({
   inputText,
@@ -30,6 +16,24 @@ const EditPost = ({
 }) => {
 
   const [moodVal, setMoodVal] = useState("Professional");
+
+  const requestObj = {
+    messages: [
+      {
+        role: "system",
+        content:
+          `You are a friendly assistant, that gives responses to a community organizer appropriate to LinkedIn in JSON format just post content between 200 and 2000 characters in length, no title. The key should be 'content'. Don't include any extra text outside of the post content itself, including hashtags. Don't say you will create the post, just give me the content. Please make the overall tone of your response ${moodVal}`,
+      },
+      {
+        role: "user",
+        content: "",
+      },
+    ],
+    model: "gpt-3.5-turbo",
+    temperature: 0.02,
+  };
+
+
 
   const getOpenAIResponse = async () => {
     setPreviewText("Loading...");
