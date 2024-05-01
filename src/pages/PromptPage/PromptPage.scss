@@ -146,4 +146,15 @@
     font-size: 1rem;
   }
 
+  &__mood-box {
+    display: flex;
+    width: 100%;
+    color: $MVP-Dark-Blue;
+  }
+
+  &__mood-box > select {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
 }

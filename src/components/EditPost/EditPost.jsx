@@ -80,12 +80,21 @@ const EditPost = ({
     <div className="promptpage__input-container">
       <PromptHeader headerText={"CommitAI Content Generator"} />
       <div className="promptpage__sub-container">
-        <h4>Mood</h4>
-        <select onChange={handleMoodSelect}>
-          <option>Professional</option>
-          <option>Silly</option>
-          <option>Humorous</option>
-        </select>
+        <div className="promptpage__mood-box">
+          <h4>I would like to write a(n) </h4>
+          <select onChange={handleMoodSelect}>
+            <option>Professional</option>
+            <option>Silly</option>
+            <option>Humorous</option>
+          </select>
+          <h4> post in a </h4>
+          <select onChange={handleMoodSelect}>
+            <option>Professional</option>
+            <option>Silly</option>
+            <option>Humorous</option>
+          </select>
+          <h4>tone</h4>
+        </div>
         <h4>What do you want to share?</h4>
         <InputBox
           value={inputText}
