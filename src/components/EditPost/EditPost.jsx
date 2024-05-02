@@ -17,6 +17,7 @@ const EditPost = ({
   const [toneVal, setToneVal] = useState("professional");
   const [postType, setPostType] = useState("update or achievement")
   const [tempVal, setTempVal] = useState(0.02);
+  const [bottomVisible, setBottomVisible] = useState(false);
 
   const requestObj = {
     messages: [
@@ -57,6 +58,7 @@ const EditPost = ({
   };
 
   const handleGenerateButtonClick = () => {
+    setBottomVisible(true);
     if (inputText) {
       getOpenAIResponse();
     } else {
@@ -129,8 +131,9 @@ const EditPost = ({
         <Button className="promptpage__generate-btn" onClick={handleGenerateButtonClick}>
           Generate Social Post
         </Button>
-        <PromptHeader headerText={"Content"} />
-        <div className="promptpage__bottom-section">
+
+        {bottomVisible ? <div className="promptpage__bottom-section">
+          <PromptHeader headerText={"Content"} />
           <div className="promptpage__sub-container">
             <ReviewPost
               previewText={previewText}
@@ -147,7 +150,11 @@ const EditPost = ({
             </Button>
           </div>
           <LoadingSpinner />
-        </div>
+        </div> :
+          null}
+
+
+
       </div>
     </div>
   );
