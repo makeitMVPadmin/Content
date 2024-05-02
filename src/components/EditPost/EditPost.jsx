@@ -17,7 +17,7 @@ const EditPost = ({
   const [toneVal, setToneVal] = useState("professional");
   const [postType, setPostType] = useState("update or achievement")
   const [tempVal, setTempVal] = useState(0.02);
-  const [bottomVisible, setBottomVisible] = useState(false);
+  const [bottomContent, setBottomContent] = useState(null);
 
   const requestObj = {
     messages: [
@@ -45,6 +45,7 @@ const EditPost = ({
       // need to parse JSON to return an object we can work with
       const parsedContent = JSON.parse(responseContent.content);
 
+      setBottomContent("done")
 
       // If responseContent has no content, setAiResponseContent to error message
       setPreviewText(
@@ -58,7 +59,7 @@ const EditPost = ({
   };
 
   const handleGenerateButtonClick = () => {
-    setBottomVisible(true);
+    setBottomContent("loading");
     if (inputText) {
       getOpenAIResponse();
     } else {
@@ -83,6 +84,36 @@ const EditPost = ({
   const handlePostTypeSelect = (e) => {
     setPostType(e.target.value.toLowerCase());
   }
+
+  let bottomContentSections = <div className="promptpage__bottom-section">
+    <PromptHeader headerText={"Content"} />
+    <div className="promptpage__sub-container">
+      <ReviewPost
+        previewText={previewText}
+        setPreviewText={setPreviewText}
+      />
+    </div>
+    <PromptHeader headerText={"Publishing Options"} />
+    <div className="promptpage__sub-container">
+      {/* <Button className="promptpage__generate-btn">
+      Save Draft
+    </Button> */}
+      <Button className="promptpage__post-btn" onClick={handlePostClick}>
+        Preview Post
+      </Button>
+    </div>
+  </div>
+
+  const bottomRender = () => {
+    if (bottomContent === null) {
+      return null;
+    } else if (bottomContent === "loading") {
+      return <LoadingSpinner />
+    } else {
+      return bottomContentSections;
+    }
+  }
+
 
   return (
     <div className="promptpage__container">
@@ -132,28 +163,7 @@ const EditPost = ({
           Generate Social Post
         </Button>
 
-        {bottomVisible ? <div className="promptpage__bottom-section">
-          <PromptHeader headerText={"Content"} />
-          <div className="promptpage__sub-container">
-            <ReviewPost
-              previewText={previewText}
-              setPreviewText={setPreviewText}
-            />
-          </div>
-          <PromptHeader headerText={"Publishing Options"} />
-          <div className="promptpage__sub-container">
-            {/* <Button className="promptpage__generate-btn">
-              Save Draft
-            </Button> */}
-            <Button className="promptpage__post-btn" onClick={handlePostClick}>
-              Preview Post
-            </Button>
-          </div>
-          <LoadingSpinner />
-        </div> :
-          null}
-
-
+        {bottomRender()}
 
       </div>
     </div>
