@@ -4,7 +4,7 @@ import { getResponseContent } from "../../utils/openAIcall";
 import PromptHeader from "../PromptHeader/PromptHeader";
 import ReviewPost from "../ReviewPost/ReviewPost";
 import { useState } from 'react';
-import { RotatingLines } from 'react-loader-spinner'
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 const EditPost = ({
   inputText,
@@ -145,17 +145,7 @@ const EditPost = ({
           Preview Post
         </Button>
       </div>
-      <RotatingLines
-        visible={true}
-        height="96"
-        width="96"
-        color="grey"
-        strokeWidth="5"
-        animationDuration="0.75"
-        ariaLabel="rotating-lines-loading"
-        wrapperStyle={{}}
-        wrapperClass=""
-      />
+      <LoadingSpinner />
     </div>
   );
 };
