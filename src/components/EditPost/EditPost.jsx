@@ -144,7 +144,7 @@ const EditPost = ({
           <InputBox
             value={inputText}
             onChange={handleInputChange}
-            placeholder="Help me write a professional sounding post about my upcoming community event."
+            placeholder="What is this about?"
             className="promptpage__input-box"
             labelVal="Give AI specific instructions for your content"
           />
