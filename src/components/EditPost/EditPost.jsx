@@ -145,8 +145,9 @@ const EditPost = ({
             <label htmlFor="large">Large</label><br></br>
           </div>
         </div>
-        <Button className="promptpage__generate-btn" onClick={handleGenerateButtonClick}>
-          Generate Social Post
+        <Button
+          className="generate"
+          onClick={handleGenerateButtonClick}>Generate Social Post Test
         </Button>
 
         {bottomRender()}
