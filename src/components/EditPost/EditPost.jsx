@@ -17,7 +17,7 @@ const EditPost = ({
   const [toneVal, setToneVal] = useState("professional");
   const [postType, setPostType] = useState("update or achievement")
   const [tempVal, setTempVal] = useState(0.02);
-  const [bottomContent, setBottomContent] = useState(null);
+  const [aiResponseLoading, setAiResponseLoading] = useState(null);
 
   const requestObj = {
     messages: [
@@ -45,7 +45,7 @@ const EditPost = ({
       // need to parse JSON to return an object we can work with
       const parsedContent = JSON.parse(responseContent.content);
 
-      setBottomContent("done")
+      setAiResponseLoading("done")
 
       // If responseContent has no content, setAiResponseContent to error message
       setPreviewText(
@@ -59,7 +59,7 @@ const EditPost = ({
   };
 
   const handleGenerateButtonClick = () => {
-    setBottomContent("loading");
+    setAiResponseLoading("loading");
     if (inputText) {
       getOpenAIResponse();
     } else {
@@ -87,9 +87,9 @@ const EditPost = ({
 
 
   const bottomRender = () => {
-    if (bottomContent === null) {
+    if (aiResponseLoading === null) {
       return null;
-    } else if (bottomContent === "loading") {
+    } else if (aiResponseLoading === "loading") {
       return (
         <div className="promptpage__spinner">
           <LoadingSpinner />
