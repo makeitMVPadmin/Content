@@ -11,20 +11,18 @@ const BottomContentSections = ({
     <div className="promptpage__bottom-section">
       <PromptHeader headerText={"Content"} />
       <div className="promptpage__sub-container">
+      <h4>Am I missing any details?</h4>
         <ReviewPost
           previewText={previewText}
           setPreviewText={setPreviewText}
         />
       </div>
       <PromptHeader headerText={"Publishing Options"} />
-      <div className="promptpage__sub-container">
-        {/* <Button className="promptpage__generate-btn">
-  Save Draft
-</Button> */}
-        <Button className="promptpage__post-btn" onClick={handlePostClick}>
-          Preview Post
+        <Button
+          className="preview"
+          onClick={handlePostClick}>
+            Preview Post
         </Button>
-      </div>
     </div>
   )
 }
