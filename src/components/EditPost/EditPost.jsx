@@ -96,8 +96,6 @@ const EditPost = ({
           <LoadingSpinner />
         </div>
       )
-
-
     } else {
       return <BottomContentSections
         previewText={previewText}
