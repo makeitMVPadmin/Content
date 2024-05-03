@@ -64,6 +64,7 @@ const EditPost = ({
       getOpenAIResponse();
     } else {
       alert("Please add input!");
+      setAiResponseLoading(null)
     }
   };
 
