@@ -2,9 +2,9 @@ import Button from "../Button/Button";
 import InputBox from "../InputBox/InputBox";
 import { getResponseContent } from "../../utils/openAIcall";
 import PromptHeader from "../PromptHeader/PromptHeader";
-import ReviewPost from "../ReviewPost/ReviewPost";
 import { useState } from 'react';
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import BottomContentSections from "../BottomContentSections/BottomContentSections";
 
 const EditPost = ({
   inputText,
@@ -85,24 +85,6 @@ const EditPost = ({
     setPostType(e.target.value.toLowerCase());
   }
 
-  let bottomContentSections = <div className="promptpage__bottom-section">
-    <PromptHeader headerText={"Content"} />
-    <div className="promptpage__sub-container">
-      <ReviewPost
-        previewText={previewText}
-        setPreviewText={setPreviewText}
-      />
-    </div>
-    <PromptHeader headerText={"Publishing Options"} />
-    <div className="promptpage__sub-container">
-      {/* <Button className="promptpage__generate-btn">
-      Save Draft
-    </Button> */}
-      <Button className="promptpage__post-btn" onClick={handlePostClick}>
-        Preview Post
-      </Button>
-    </div>
-  </div>
 
   const bottomRender = () => {
     if (bottomContent === null) {
@@ -110,7 +92,11 @@ const EditPost = ({
     } else if (bottomContent === "loading") {
       return <LoadingSpinner />
     } else {
-      return bottomContentSections;
+      return <BottomContentSections
+        previewText={previewText}
+        setPreviewText={setPreviewText}
+        handlePostClick={handlePostClick}
+      />;
     }
   }
 
