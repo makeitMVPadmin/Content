@@ -90,7 +90,13 @@ const EditPost = ({
     if (bottomContent === null) {
       return null;
     } else if (bottomContent === "loading") {
-      return <LoadingSpinner />
+      return (
+        <div className="promptpage__spinner">
+          <LoadingSpinner />
+        </div>
+      )
+
+
     } else {
       return <BottomContentSections
         previewText={previewText}
