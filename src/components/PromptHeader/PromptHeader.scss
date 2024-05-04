@@ -2,8 +2,13 @@
 
 .prompt-header {
   background-color:$Powder-Blue;
+  display: flex;
   border: 2px solid black;
   width: 100%;
-  padding-left: 10px;
+  padding: 10px;
   margin-top: 10px;
+}
+
+.prompt-header > * {
+  margin-right: 10px;
 }
