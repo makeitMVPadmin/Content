@@ -1,7 +1,12 @@
+@import '../../styles/partials/variables.scss';
+
 .generate {
-  margin: 15px 0;
-  background-color: gray;
+  color: white;
+  background-color: $MVP-Dark-Blue;
+  padding: 8px;
   border: none;
   border-radius: 5px;
-  padding: 5px 15px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-left: 10px;
 }

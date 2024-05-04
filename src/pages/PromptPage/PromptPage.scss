@@ -52,6 +52,8 @@
 
   &__container {
     width: 100%;
+    border: 1px solid black;
+    // margin: 10px;
   }
 
   &__input-container {
@@ -98,7 +100,6 @@
   }
 
   &__sub-container {
-    border: 2px solid black;
     display: flex;
     align-items: flex-start;
     flex-direction: column;
@@ -155,6 +156,16 @@
   &__mood-box > select {
     margin-left: 10px;
     margin-right: 10px;
+  }
+
+  &__bottom-section {
+    width: 100%;
+  }
+
+  &__spinner {
+    display: flex;
+    justify-content: center;
+    width: 100%;
   }
 
 }

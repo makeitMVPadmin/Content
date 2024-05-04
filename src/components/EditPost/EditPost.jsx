@@ -2,8 +2,9 @@ import Button from "../Button/Button";
 import InputBox from "../InputBox/InputBox";
 import { getResponseContent } from "../../utils/openAIcall";
 import PromptHeader from "../PromptHeader/PromptHeader";
-import ReviewPost from "../ReviewPost/ReviewPost";
 import { useState } from 'react';
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import BottomContentSections from "../BottomContentSections/BottomContentSections";
 
 const EditPost = ({
   inputText,
@@ -16,6 +17,7 @@ const EditPost = ({
   const [toneVal, setToneVal] = useState("professional");
   const [postType, setPostType] = useState("update or achievement")
   const [tempVal, setTempVal] = useState(0.02);
+  const [aiResponseLoading, setAiResponseLoading] = useState(null);
 
   const requestObj = {
     messages: [
@@ -43,8 +45,9 @@ const EditPost = ({
       // need to parse JSON to return an object we can work with
       const parsedContent = JSON.parse(responseContent.content);
 
+      setAiResponseLoading("done")
 
-      // // If responseContent has no content, setAiResponseContent to error message
+      // If responseContent has no content, setAiResponseContent to error message
       setPreviewText(
         parsedContent.content
           ? parsedContent.content
@@ -56,10 +59,12 @@ const EditPost = ({
   };
 
   const handleGenerateButtonClick = () => {
+    setAiResponseLoading("loading");
     if (inputText) {
       getOpenAIResponse();
     } else {
       alert("Please add input!");
+      setAiResponseLoading(null)
     }
   };
 
@@ -81,68 +86,79 @@ const EditPost = ({
     setPostType(e.target.value.toLowerCase());
   }
 
+
+  const bottomRender = () => {
+    if (aiResponseLoading === null) {
+      return null;
+    } else if (aiResponseLoading === "loading") {
+      return (
+        <div className="promptpage__spinner">
+          <LoadingSpinner />
+        </div>
+      )
+
+
+    } else {
+      return <BottomContentSections
+        previewText={previewText}
+        setPreviewText={setPreviewText}
+        handlePostClick={handlePostClick}
+      />;
+    }
+  }
+
+
   return (
-    <div className="promptpage__input-container">
-      <PromptHeader headerText={"CommitAI Content Generator"} />
-      <div className="promptpage__sub-container">
-        <div className="promptpage__mood-box">
-          <h4>I would like to write a(n)</h4>
-          <select onChange={handlePostTypeSelect}>
-            <option>Update or Achievement</option>
-            <option>Event Announcement</option>
-            <option>Job Opportunity</option>
-            <option>Educational Content</option>
-            <option>Industry Insight</option>
-          </select>
-          <h4> post in a</h4>
-          <select onChange={handleMoodSelect}>
-            <option>Professional</option>
-            <option>Witty</option>
-            <option>Appreciative</option>
-            <option>Casual</option>
-            <option>Engaging</option>
-            <option>Motivating</option>
-          </select>
-          <h4>tone</h4>
+    <div className="promptpage__container">
+      <div className="promptpage__input-container">
+        <PromptHeader headerText={"CommitAI Content Generator"} />
+        <div className="promptpage__sub-container">
+          <div className="promptpage__mood-box">
+            <h4>I would like to write a(n)</h4>
+            <select onChange={handlePostTypeSelect}>
+              <option>Update or Achievement</option>
+              <option>Event Announcement</option>
+              <option>Job Opportunity</option>
+              <option>Educational Content</option>
+              <option>Industry Insight</option>
+            </select>
+            <h4> post in a</h4>
+            <select onChange={handleMoodSelect}>
+              <option>Professional</option>
+              <option>Witty</option>
+              <option>Appreciative</option>
+              <option>Casual</option>
+              <option>Engaging</option>
+              <option>Motivating</option>
+            </select>
+            <h4>tone</h4>
+          </div>
+          <h4>What do you want to share?</h4>
+          <InputBox
+            value={inputText}
+            onChange={handleInputChange}
+            placeholder="What is this about?"
+            className="promptpage__input-box"
+            labelVal="Give AI specific instructions for your content"
+          />
+          <h4>Output size</h4>
+          {/* this will need to be within form, along with everything else */}
+          <div className="promptpage__choice-selection">
+            <input type="radio" id="small" name="output-size" value="small"></input>
+            <label htmlFor="small">Small</label><br></br>
+            <input type="radio" id="med" name="output-size" value="med"></input>
+            <label htmlFor="med">Medium</label><br></br>
+            <input type="radio" id="large" name="output-size" value="large"></input>
+            <label htmlFor="large">Large</label><br></br>
+          </div>
         </div>
-        <h4>What do you want to share?</h4>
-        <InputBox
-          value={inputText}
-          onChange={handleInputChange}
-          placeholder="Help me write a professional sounding post about my upcoming community event."
-          className="promptpage__input-box"
-          labelVal="Give AI specific instructions for your content"
-        />
-        <h4>Output size</h4>
-        {/* this will need to be within form, along with everything else */}
-        <div className="promptpage__choice-selection">
-          <input type="radio" id="small" name="output-size" value="small"></input>
-          <label htmlFor="small">Small</label><br></br>
-          <input type="radio" id="med" name="output-size" value="med"></input>
-          <label htmlFor="med">Medium</label><br></br>
-          <input type="radio" id="large" name="output-size" value="large"></input>
-          <label htmlFor="large">Large</label><br></br>
-        </div>
-      </div>
-      <Button className="promptpage__generate-btn" onClick={handleGenerateButtonClick}>
-        Generate Social Post
-      </Button>
-      <PromptHeader headerText={"Content"} />
-      <div className="promptpage__sub-container">
-        <ReviewPost
-          previewText={previewText}
-          setPreviewText={setPreviewText}
-        />
-      </div>
-      <PromptHeader headerText={"Publishing Options"} />
-      <div className="promptpage__choice-selection">
-        <Button className="promptpage__generate-btn">
-          Save Draft
+        <Button
+          className="generate"
+          onClick={handleGenerateButtonClick}>Generate Social Post Test
         </Button>
-        {/* will need to make this button disabled if no content in preview */}
-        <Button className="promptpage__post-btn" onClick={handlePostClick}>
-          Preview Post
-        </Button>
+
+        {bottomRender()}
+
       </div>
     </div>
   );
