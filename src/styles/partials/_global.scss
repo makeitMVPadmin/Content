@@ -17,8 +17,15 @@ h6 {
   font-family: "Corben", sans-serif;
 }
 
-p, button, select {
+p, button {
   font-family: "Gilroy", sans-serif;
+}
+
+select {
+  font-family: "Corben", sans-serif;
+  color: $MVP-Dark-Blue;
+  padding: 5px;
+  cursor: pointer;
 }
 
 a {

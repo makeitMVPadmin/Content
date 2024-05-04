@@ -113,7 +113,7 @@ const EditPost = ({
         <div className="promptpage__sub-container">
           <div className="promptpage__mood-box">
             <h4>I would like to write a(n)</h4>
-            <select onChange={handlePostTypeSelect}>
+            <select className="promptpage__select" onChange={handlePostTypeSelect}>
               <option>Update or Achievement</option>
               <option>Event Announcement</option>
               <option>Job Opportunity</option>
@@ -121,7 +121,7 @@ const EditPost = ({
               <option>Industry Insight</option>
             </select>
             <h4> post in a</h4>
-            <select onChange={handleMoodSelect}>
+            <select className="promptpage__select" onChange={handleMoodSelect}>
               <option>Professional</option>
               <option>Witty</option>
               <option>Appreciative</option>
