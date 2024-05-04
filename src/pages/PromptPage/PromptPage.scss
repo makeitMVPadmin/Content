@@ -4,6 +4,7 @@
 .promptpage-container {
   display: flex;
   justify-content: center;
+  overflow-x: auto;
 }
 
 .promptpage {
@@ -17,7 +18,6 @@
   }
   @include Tablet {
     width: 75vw;
-
   }
   @include Desktop {
     width: 66vw;
@@ -153,6 +153,17 @@
     display: flex;
     width: 100%;
     color: $MVP-Dark-Blue;
+    @include Mobile {
+      flex-direction: column;
+      align-items: center;
+    }
+    @include Tablet {
+      flex-direction: column;
+
+    }
+    @include Desktop {
+      flex-direction: row;
+    }
   }
 
   &__mood-box > select {
