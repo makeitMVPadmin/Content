@@ -5,6 +5,8 @@ import PromptHeader from "../PromptHeader/PromptHeader";
 import { useState } from 'react';
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import BottomContentSections from "../BottomContentSections/BottomContentSections";
+import rocketIcon from '../../assets/icons/rocket.svg';
+
 
 const EditPost = ({
   inputText,
@@ -109,7 +111,7 @@ const EditPost = ({
   return (
     <div className="promptpage__container">
       <div className="promptpage__input-container">
-        <PromptHeader headerText={"CommitAI Content Generator"} />
+        <PromptHeader headerText={"CommitAI Content Generator"} icon={rocketIcon}/>
         <div className="promptpage__sub-container">
           <div className="promptpage__mood-box">
             <h4>I would like to write a(n)</h4>
