@@ -51,7 +51,7 @@ const PromptPage = () => {
   };
 
 
-  const { linkedInLogin, isSetLoadSpinner, successMessage, errorMessage, linkedinRedirectPage } = useLinkedInlogin(content);
+  const { linkedInLogin, isSetLoadSpinner, successMessage, errorMessage } = useLinkedInlogin(content);
 
   const renderActiveTab = () => {
     return (
@@ -84,7 +84,7 @@ const PromptPage = () => {
               >
                 <div>
                   {isSetLoadSpinner ? (
-                      <Button className="promptpage__signin-linkedin-btn" onClick={linkedInLogin}>
+                      <Button className="promptpage__signin-linkedin-btn" onClick={linkedInLogin} onClick={linkedInLogin}>
                         <img src={linkedinSignIn_small}/>
                       </Button>
                     ):(
