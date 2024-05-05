@@ -47,7 +47,7 @@ const PromptPage = () => {
   };
 
 
-
+  const { linkedInLogin, isSetLoadSpinner, successMessage, errorMessage } = useLinkedInlogin(content);
 
   const renderActiveTab = () => {
     return (
@@ -79,7 +79,7 @@ const PromptPage = () => {
               style={PopUpStyle}
               >
                 <div>
-                  <Button className="promptpage__signin-linkedin-btn">
+                  <Button className="promptpage__signin-linkedin-btn" onClick={linkedInLogin}>
                     <img src={linkedinSignIn_small}/>
                   </Button> 
               </div>
