@@ -1,14 +1,31 @@
 import { useState } from 'react';
 import './PopUpModal.scss';
-import Modal from "react-modal";
+import linkedinSignIn_small from '../../assets/images/linkedinSignIn_small.png';
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import SuccessMessageAlert from "../../components/SuccessMessageAlert/SuccessMessageAlert";
+import Button from '../Button/Button';
 
-// const PopUpModal = ({isOpen, hasCloseBtn=true, onClose, children}) => {
+// const PopUpModal = ({isSetLoadSpinner, successMessage, signInButton, closeButton}) => {
 //     // const [isModalOpen, setModalOpen] = useState(isOpen);
 //     // const 
 //     return (
-//         <Modal>
-//             {children}
-//         </Modal>
+//         <div>
+//             {isSetLoadSpinner ? (
+//                 <Button className="promptpage__signin-linkedin-btn" onClick={signInButton}>
+//                     <img src={linkedinSignIn_small}/>
+//                 </Button>
+//             ):(
+//                 successMessage ? (
+//                 <SuccessMessageAlert 
+//                     message={successMessage}
+//                     redirectPage={closeButton}
+//                     >
+//                 </SuccessMessageAlert>
+//                 ):(
+//                 <LoadingSpinner></LoadingSpinner>
+//                 ) 
+//             )}
+//         </div>
 
 //     );
 // };
@@ -20,14 +37,14 @@ const PopUpStyle = {
         left: 0,
         right: 0,
         bottom: 0,
-        backgroundColor: 'rgba(255, 255, 255, 0.85)'
+        backgroundColor: 'rgba(217, 217, 217, 0.85)'
       },
     content: {
         position: 'absolute',
         top: '20%',
-        left: '30%',
-        right: '30%',
-        bottom: '20%',
+        left: '37%',
+        right: '37%',
+        bottom: '30%',
         border: '1px solid #ccc',
         background: '#fff',
         overflow: 'auto',

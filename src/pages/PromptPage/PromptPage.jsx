@@ -9,13 +9,14 @@ import Modal from 'react-modal';
 import PopUpStyle from "../../components/PopUpModal/PopUpModal";
 import linkedinSignIn_small from '../../assets/images/linkedinSignIn_small.png';
 import { useLinkedInlogin } from "../../utils/linkedInApi";  
-
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import SuccessMessageAlert from "../../components/SuccessMessageAlert/SuccessMessageAlert";
 // import ReviewPost from "../../components/ReviewPost/ReviewPost";
 
 const PromptPage = () => {
   const [inputText, setInputText] = useState("");
   const [previewText, setPreviewText] = useState("Preview here");
-  const [activeTab, setActiveTab] = useState("edit");
+  const [activeTab, setActiveTab] = useState("review");
   const [isModalOpen, setModalOpen] = useState(false);
   
   var time = new Date();
@@ -47,7 +48,7 @@ const PromptPage = () => {
   };
 
 
-
+  const { linkedInLogin, isSetLoadSpinner, successMessage, errorMessage } = useLinkedInlogin(content);
 
   const renderActiveTab = () => {
     return (
@@ -79,10 +80,23 @@ const PromptPage = () => {
               style={PopUpStyle}
               >
                 <div>
-                  <Button className="promptpage__signin-linkedin-btn">
-                    <img src={linkedinSignIn_small}/>
-                  </Button> 
+                  {isSetLoadSpinner ? (
+                      <Button className="promptpage__signin-linkedin-btn" onClick={linkedInLogin}>
+                        <img src={linkedinSignIn_small}/>
+                      </Button>
+                    ):(
+                      successMessage ? (
+                        <SuccessMessageAlert 
+                          message={successMessage}
+                          redirectPage={handleClosePostModal}
+                          >
+                        </SuccessMessageAlert>
+                      ):(
+                        <LoadingSpinner></LoadingSpinner>
+                      ) 
+                  )}
               </div>
+              
             </Modal>
           </div>
 
