@@ -1,6 +1,6 @@
 import queryString from 'query-string';
 import axios from 'axios';
-import React from "react";
+import { useState } from "react";
 import { useLinkedIn } from "react-linkedin-login-oauth2";
 import { addMessage } from './firebaseMessages';
 
@@ -20,24 +20,27 @@ import { addMessage } from './firebaseMessages';
 
 
  // get the user authorization token from linkedin login
- export const useLinkedInlogin = (content) =>{
-    const [errorMessage, setErrorMessage] = React.useState("");
-    const [successMessage, setsuccessMessage] = React.useState("");
-
+ export const useLinkedInlogin = (content) => {
+    const [errorMessage, setErrorMessage] = useState("");
+    const [successMessage, setsuccessMessage] = useState("");
+    const [isSetLoadSpinner, setLoadSpinner] = useState(true);
     const { linkedInLogin } = useLinkedIn({
         clientId: process.env.REACT_APP_LINKEDIN_CLIENT_ID,
         redirectUri: `${window.location.origin}/linkedin/callback`,
         onSuccess: (authCode) => {
             const accessTokenData = getAccessTokenData(authCode, content);
             setErrorMessage("");
+            setsuccessMessage("Successfully Posted on Linkedin");
+            setLoadSpinner(false);
         },
         scope: ["w_member_social","openid","profile","email"],
         onError: (error) => {
+            setLoadSpinner(false);
             setErrorMessage(error.errorMessage);
         },
     });
 
-    return{linkedInLogin, errorMessage, successMessage};
+    return{linkedInLogin, isSetLoadSpinner, errorMessage, successMessage};
 };
 
 // function that takes in Authorization code and returns the access token
