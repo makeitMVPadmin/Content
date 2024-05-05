@@ -26,12 +26,24 @@
     text-align: center; /* Align text content in the center */
 
 }
-.successMessage__close-btn {
+.successMessage__linkedin-btn {
     margin: 10px auto; /* Adjust margin to center vertically */
     padding: 10px;
     display: flex; /* Use flexbox */
     color: white;
-    background-color: $MVP-Dark-Blue;
+    background-color: $MVP-Dark-Blue ;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+.successMessage__close-btn {
+    margin: 10px auto; /* Adjust margin to center vertically */
+    padding: 10px;
+    display: flex; /* Use flexbox */
+    color: $MVP-Dark-Blue;
+    // background-color: ;
     padding: 8px;
     border: none;
     border-radius: 5px;

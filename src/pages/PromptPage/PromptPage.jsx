@@ -42,13 +42,16 @@ const PromptPage = () => {
     setModalOpen(false);
   };
 
+  const handleLinkedinRedirect = () => {
+    
+  };
   const handleSubmitPostClick = () => {
     // handle submission thru LinkedIn here
 
   };
 
 
-  const { linkedInLogin, isSetLoadSpinner, successMessage, errorMessage } = useLinkedInlogin(content);
+  const { linkedInLogin, isSetLoadSpinner, successMessage, errorMessage, linkedinRedirectPage } = useLinkedInlogin(content);
 
   const renderActiveTab = () => {
     return (
@@ -88,6 +91,7 @@ const PromptPage = () => {
                       successMessage ? (
                         <SuccessMessageAlert 
                           message={successMessage}
+                          linkedinRedirectPage = {handleLinkedinRedirect}
                           redirectPage={handleClosePostModal}
                           >
                         </SuccessMessageAlert>

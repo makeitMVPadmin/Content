@@ -24,6 +24,8 @@ import { addMessage } from './firebaseMessages';
     const [errorMessage, setErrorMessage] = useState("");
     const [successMessage, setsuccessMessage] = useState("");
     const [isSetLoadSpinner, setLoadSpinner] = useState(true);
+    const [linkedinRedirectPage, setLinkedinRedirectPage] = useState("");
+    
     const { linkedInLogin } = useLinkedIn({
         clientId: process.env.REACT_APP_LINKEDIN_CLIENT_ID,
         redirectUri: `${window.location.origin}/linkedin/callback`,
@@ -40,7 +42,7 @@ import { addMessage } from './firebaseMessages';
         },
     });
 
-    return{linkedInLogin, isSetLoadSpinner, errorMessage, successMessage};
+    return{linkedInLogin, isSetLoadSpinner, errorMessage, successMessage,linkedinRedirectPage};
 };
 
 // function that takes in Authorization code and returns the access token
