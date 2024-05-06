@@ -3,7 +3,7 @@ import "./CommitAIBanner.scss"
 const CommitAIBanner = () => {
   return (
     <div className="commit-ai-banner">
-      Create New Post with CommitAI
+      <p>Create New Post with CommitAI</p>
     </div>
   )
 }
