@@ -1,7 +1,9 @@
+import "./CommitAIBanner.scss"
+
 const CommitAIBanner = () => {
   return (
-    <div>
-      Banner
+    <div className="commit-ai-banner">
+      Create New Post with CommitAI
     </div>
   )
 }
