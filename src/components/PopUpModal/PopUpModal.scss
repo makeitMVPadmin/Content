@@ -1,0 +1,34 @@
+@import '../../styles/partials/variables.scss';
+
+
+.modal__box{
+    position:absolute ;
+    background: white;
+    border-radius: 24px;
+    width: 90%;
+    min-height: 90%;
+    align-content: center;
+    vertical-align: middle;
+}
+.modal__title > h4{
+    color: $MVP-Dark-Blue;
+    text-align: center;
+}
+.modal__children > button{
+    margin: 20px auto; /* Adjust margin to center vertically */
+    display: flex; /* Use flexbox */
+    border: none;
+    cursor: pointer;
+}
+
+.modal__close-btn {
+    margin: 10px auto; /* Adjust margin to center vertically */
+    padding: 10px;
+    display: flex; /* Use flexbox */
+    color: $MVP-Dark-Blue;
+    // background-color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}

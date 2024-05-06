@@ -3,7 +3,7 @@ import './SuccessMessageAlert.scss';
 import { FaCheck } from "react-icons/fa";
 import successCheckMark from '../../assets/images/successCheckMark.svg';
 
-const SuccessMessageAlert = ({message, linkedinRedirectPage, redirectPage}) => {
+const SuccessMessageAlert = ({message, redirectPage, children}) => {
     return (
         <div className='successMessage-Box'>
             <div className="successMessage-alert">
@@ -13,12 +13,10 @@ const SuccessMessageAlert = ({message, linkedinRedirectPage, redirectPage}) => {
             <div className="successMessage-icon">
                 <img src={successCheckMark}></img>
             </div>
-            <Button className="successMessage__linkedin-btn" onClick={linkedinRedirectPage}>
-                Go to Linkedin
-            </Button>
-            <Button className="successMessage__close-btn" onClick={redirectPage}>
+            {children}
+            {/* <Button className="successMessage__close-btn" onClick={redirectPage}>
                 Close
-            </Button>
+            </Button> */}
         </div>
         
     )

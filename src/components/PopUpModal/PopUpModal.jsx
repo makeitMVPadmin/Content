@@ -1,34 +1,6 @@
-import { useState } from 'react';
 import './PopUpModal.scss';
-import linkedinSignIn_small from '../../assets/images/linkedinSignIn_small.png';
-import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
-import SuccessMessageAlert from "../../components/SuccessMessageAlert/SuccessMessageAlert";
 import Button from '../Button/Button';
 
-// const PopUpModal = ({isSetLoadSpinner, successMessage, signInButton, closeButton}) => {
-//     // const [isModalOpen, setModalOpen] = useState(isOpen);
-//     // const 
-//     return (
-//         <div>
-//             {isSetLoadSpinner ? (
-//                 <Button className="promptpage__signin-linkedin-btn" onClick={signInButton}>
-//                     <img src={linkedinSignIn_small}/>
-//                 </Button>
-//             ):(
-//                 successMessage ? (
-//                 <SuccessMessageAlert 
-//                     message={successMessage}
-//                     redirectPage={closeButton}
-//                     >
-//                 </SuccessMessageAlert>
-//                 ):(
-//                 <LoadingSpinner></LoadingSpinner>
-//                 ) 
-//             )}
-//         </div>
-
-//     );
-// };
 
 const PopUpStyle = {
     overlay: {
@@ -42,18 +14,45 @@ const PopUpStyle = {
     content: {
         position: 'absolute',
         top: '20%',
-        left: '37%',
-        right: '37%',
-        bottom: '30%',
-        border: '1px solid #ccc',
-        background: '#fff',
+        left: '35%',
+        right: '35%',
+        bottom: '10%',
+        width: '500px',
+        height: '50%',
+        border: 'none',
+        // background: 'rgba(100, 100, 100, 1)',
         overflow: 'auto',
         WebkitOverflowScrolling: 'touch',
-        borderRadius: '10px',
+        borderRadius: '24px',
         outline: 'none',
-        padding: '20px'
+        padding: '2%'
+        
     }
 };
 
-export default PopUpStyle;
+// const handleOpenPostModal = () => {
+//     setModalOpen(true);
+// };
+
+// const handleClosePostModal = () =>{
+//     setModalOpen(false);
+// };
+const PopUpModal = ({title,closeButtonAction,closeButtonName,children}) => {
+    return (
+        <div className='modal__box'>
+            <div className="modal__title">
+                <h4>{title.icon} {title.title}</h4>
+            </div>
+            <div className="modal__children">
+                {children}
+            </div>
+            <Button className="modal__close-btn" onClick={closeButtonAction}>
+                {closeButtonName}
+            </Button>
+        </div>
+    );
+};
+
+
+export { PopUpModal, PopUpStyle };
 

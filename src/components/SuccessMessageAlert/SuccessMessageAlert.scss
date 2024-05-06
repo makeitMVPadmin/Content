@@ -1,7 +1,7 @@
 @import '../../styles/partials/variables.scss';
 
 .successMessage-box {
-    background-color: #ffffff;
+    background: #ffffff;
 }
 .successMessage-alert {
     margin: 10px 0;
@@ -44,7 +44,6 @@
     display: flex; /* Use flexbox */
     color: $MVP-Dark-Blue;
     // background-color: ;
-    padding: 8px;
     border: none;
     border-radius: 5px;
     cursor: pointer;

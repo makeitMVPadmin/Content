@@ -6,11 +6,14 @@ import Navbar from "../../components/Navbar/Navbar";
 import MockLinkedInPost from "../../components/MockLinkedInPost/MockLinkedInPost";
 import Button from "../../components/Button/Button";
 import Modal from 'react-modal';
-import PopUpStyle from "../../components/PopUpModal/PopUpModal";
 import linkedinSignIn_small from '../../assets/images/linkedinSignIn_small.png';
 import { useLinkedInlogin } from "../../utils/linkedInApi";  
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import SuccessMessageAlert from "../../components/SuccessMessageAlert/SuccessMessageAlert";
+import { PopUpModal, PopUpStyle} from "../../components/PopUpModal/PopUpModal";
+import { HiOutlineRocketLaunch } from "react-icons/hi2";
+
+import PromptHeader from "../../components/PromptHeader/PromptHeader";
 // import ReviewPost from "../../components/ReviewPost/ReviewPost";
 
 const PromptPage = () => {
@@ -82,24 +85,50 @@ const PromptPage = () => {
               ariaHideApp={false}
               style={PopUpStyle}
               >
-                <div>
+                <>
                   {isSetLoadSpinner ? (
-                      <Button className="promptpage__signin-linkedin-btn" onClick={linkedInLogin} onClick={linkedInLogin}>
+                    <PopUpModal
+                      title={{icon: <HiOutlineRocketLaunch></HiOutlineRocketLaunch>, title:"Sign in to post with Commit AI"}}
+                      closeButtonAction={handleClosePostModal}
+                      closeButtonName={"Cancel"}
+                      >
+                      <Button className="promptpage__signin-linkedin-btn" onClick={linkedInLogin}>
                         <img src={linkedinSignIn_small}/>
                       </Button>
+                    </PopUpModal>
+                    // <PromptHeader headerText={"hello"}></PromptHeader>
+                    // <div className="promptpage__linkedinpost-modal-signin">
+                    //   Sign in to post with Commit AI
+                    //   <Button className="promptpage__signin-linkedin-btn" onClick={linkedInLogin}>
+                    //     <img src={linkedinSignIn_small}/>
+                    //   </Button>
+                    //   <Button className="promptpage__cancel-btn" onClick={handleClosePostModal}>
+                    //     Cancel
+                    //   </Button>
+                    // </div>
+                      
                     ):(
                       successMessage ? (
-                        <SuccessMessageAlert 
-                          message={successMessage}
-                          linkedinRedirectPage = {handleLinkedinRedirect}
-                          redirectPage={handleClosePostModal}
+                        <PopUpModal
+                          title={{title:"Your post has been created!"}}
+                          closeButtonName="Close"
+                          closeButtonAction={handleClosePostModal}
                           >
-                        </SuccessMessageAlert>
+                          <SuccessMessageAlert 
+                            message={successMessage}
+                            redirectPage={handleClosePostModal}
+                            >
+                          </SuccessMessageAlert>
+                          <Button className="successMessage__linkedin-btn" onClick={handleLinkedinRedirect}>
+                            Go to Linkedin
+                          </Button>
+                        </PopUpModal>
+                        
                       ):(
                         <LoadingSpinner></LoadingSpinner>
                       ) 
                   )}
-              </div>
+              </>
               
             </Modal>
           </div>
