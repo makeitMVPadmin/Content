@@ -152,7 +152,7 @@ const EditPost = ({
         </div>
         <Button
           className="generate"
-          onClick={handleGenerateButtonClick}>Generate Social Post Test
+          onClick={handleGenerateButtonClick}>Generate Content
         </Button>
 
         {bottomRender()}
