@@ -2,11 +2,12 @@ import "./PromptPage.scss";
 import { useState } from "react";
 import EditPost from "../../components/EditPost/EditPost";
 import PromptPageTabs from "../../components/PromptPageTabs/PromptPageTabs";
-import Navbar from "../../components/Navbar/Navbar";
+// import Navbar from "../../components/Navbar/Navbar";
 import MockLinkedInPost from "../../components/MockLinkedInPost/MockLinkedInPost";
 import Button from "../../components/Button/Button";
 // import ReviewPost from "../../components/ReviewPost/ReviewPost";
 import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
+import CommitAIBanner from "../../components/CommitAIBanner/CommitAIBanner";
 
 const PromptPage = () => {
   const [inputText, setInputText] = useState("");
@@ -57,6 +58,7 @@ const PromptPage = () => {
     <div className="promptpage-container">
       <div className="promptpage">
         <DashboardNavbar />
+        <CommitAIBanner />
         <PromptPageTabs activeTab={activeTab} setActiveTab={setActiveTab} />
         {renderActiveTab()}
       </div>
