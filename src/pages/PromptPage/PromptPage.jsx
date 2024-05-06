@@ -30,14 +30,18 @@ const PromptPage = () => {
     return (
       <>
         {activeTab === "edit" && (
-          <div className="promptpage__container">
-            <EditPost
-              inputText={inputText}
-              handleInputChange={handleInputChange}
-              setActivePage={setActiveTab}
-              setPreviewText={setPreviewText}
-              previewText={previewText}
-            />
+          <div className="promptpage__background-container">
+            <div className="promptpage__outer-container">
+              <div className="promptpage__container">
+                <EditPost
+                  inputText={inputText}
+                  handleInputChange={handleInputChange}
+                  setActivePage={setActiveTab}
+                  setPreviewText={setPreviewText}
+                  previewText={previewText}
+                />
+              </div>
+            </div>
           </div>
         )}
         {activeTab === "review" && (

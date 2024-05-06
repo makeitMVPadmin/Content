@@ -50,9 +50,24 @@
     }
   }
 
+  &__background-container {
+    width: 100%;
+    padding: 1rem;
+    background-color: $Powder-Blue;
+  }
+
+  &__outer-container {
+    width: 100%;
+    background-color: white;
+    padding: 1rem;
+    border: 2px solid black;
+    border-radius: 8px;
+  }
+
   &__container {
     width: 100%;
     border: 1px solid black;
+    border-radius: 8px;
     // This color is not in the MVP variables, but it's on the mockup
     background-color: #E1F0FB;
   }
