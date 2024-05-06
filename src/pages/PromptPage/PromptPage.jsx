@@ -2,12 +2,11 @@ import "./PromptPage.scss";
 import { useState } from "react";
 import EditPost from "../../components/EditPost/EditPost";
 import PromptPageTabs from "../../components/PromptPageTabs/PromptPageTabs";
-// import Navbar from "../../components/Navbar/Navbar";
 import MockLinkedInPost from "../../components/MockLinkedInPost/MockLinkedInPost";
 import Button from "../../components/Button/Button";
-// import ReviewPost from "../../components/ReviewPost/ReviewPost";
 import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
 import CommitAIBanner from "../../components/CommitAIBanner/CommitAIBanner";
+import { Link } from "react-router-dom";
 
 const PromptPage = () => {
   const [inputText, setInputText] = useState("");
@@ -40,6 +39,11 @@ const PromptPage = () => {
                   setPreviewText={setPreviewText}
                   previewText={previewText}
                 />
+              </div>
+              <div className="promptpage__exit-area">
+                <Link to="/dashboard">
+                  <h3>&#60;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exit</h3>
+                </Link>
               </div>
             </div>
           </div>
