@@ -22,10 +22,10 @@ p, button {
 }
 
 select {
-  font-family: "Corben", sans-serif;
-  color: $MVP-Dark-Blue;
-  padding: 5px;
+  padding: 10px;
   cursor: pointer;
+  font-weight: 200;
+  border-radius: 5px;
 }
 
 a {
