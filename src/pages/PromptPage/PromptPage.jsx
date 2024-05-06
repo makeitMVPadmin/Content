@@ -14,6 +14,7 @@ import { PopUpModal, PopUpStyle} from "../../components/PopUpModal/PopUpModal";
 import { HiOutlineRocketLaunch } from "react-icons/hi2";
 
 import PromptHeader from "../../components/PromptHeader/PromptHeader";
+import ErrorMessageAlert from "../../components/ErrorMessageAlert/ErrorMessageAlert";
 // import ReviewPost from "../../components/ReviewPost/ReviewPost";
 
 const PromptPage = () => {
@@ -21,7 +22,12 @@ const PromptPage = () => {
   const [previewText, setPreviewText] = useState("Preview here");
   const [activeTab, setActiveTab] = useState("review");
   const [isModalOpen, setModalOpen] = useState(false);
-  
+
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [successMessage, setsuccessMessage] = useState(null);
+  const [isSetLoadSpinner, setLoadSpinner] = useState(null);
+  // const [linkedinRedirectPage, setLinkedinRedirectPage] = useState("")
+
   var time = new Date();
   const prompt = "This is a test Prompt. Posted using LinkedIn API. Date: "+time.toTimeString();
   const content = {
@@ -43,18 +49,80 @@ const PromptPage = () => {
 
   const handleClosePostModal = () =>{
     setModalOpen(false);
+    setErrorMessage(null);
+    setsuccessMessage(null);
+    setLoadSpinner(null);
   };
 
   const handleLinkedinRedirect = () => {
     
   };
+
+  // const { linkedInLogin, isSetLoadSpinner1, successMessage1, errorMessage1 } = useLinkedInlogin(content, setsuccessMessage, setLoadSpinner);
+  const { linkedInLogin } = useLinkedInlogin(content, setsuccessMessage, setErrorMessage, setLoadSpinner);
+
   const handleSubmitPostClick = () => {
     // handle submission thru LinkedIn here
+    setLoadSpinner("loading");
+    linkedInLogin();
+    setLoadSpinner(null);
 
   };
+  const linkedinPostModalRender = () => {
+    if (isSetLoadSpinner === "loading"){
+      return (
+        <div className="modal__spinner">
+          <LoadingSpinner />
+        </div>
+      )
+    }else if (successMessage === null && errorMessage === null && isSetLoadSpinner === null) {
+      return (
+        <PopUpModal
+          title={{icon: <HiOutlineRocketLaunch></HiOutlineRocketLaunch>, title:"Sign in to post with Commit AI"}}
+          closeButtonAction={handleClosePostModal}
+          closeButtonName={"Cancel"}
+          >
+          <Button className="promptpage__signin-linkedin-btn" onClick={handleSubmitPostClick}>
+            <img src={linkedinSignIn_small}/>
+          </Button>
+          {errorMessage && errorMessage}
+        </PopUpModal>
+      )
+    }else if (successMessage !== null){
+      return (
+        <PopUpModal
+          title={{title:"Your post has been created!"}}
+          closeButtonName="Close"
+          closeButtonAction={handleClosePostModal}
+          >
+          <SuccessMessageAlert 
+            message={successMessage}
+            redirectPage={handleClosePostModal}
+            >
+          </SuccessMessageAlert>
+          <Button className="successMessage__linkedin-btn" onClick={handleLinkedinRedirect}>
+            Go to Linkedin
+          </Button>
+        </PopUpModal>             
+      )
+    }else if (errorMessage !== null){
+      return (
+        <PopUpModal
+        title={{title:"Your post has not been created!"}}
+        closeButtonName="Close"
+        closeButtonAction={handleClosePostModal}
+        >
+          <ErrorMessageAlert
+            message={errorMessage}>
+          </ErrorMessageAlert>
+        
+      </PopUpModal>   
+      )
+    } 
+  };
+ 
 
 
-  const { linkedInLogin, isSetLoadSpinner, successMessage, errorMessage } = useLinkedInlogin(content);
 
   const renderActiveTab = () => {
     return (
@@ -82,31 +150,32 @@ const PromptPage = () => {
               id = "promptpage__linkedinpost-modal"
               isOpen={isModalOpen}
               onRequestClose={handleClosePostModal}
+              // onAfterOpen={linkedinPostModalRender}
               ariaHideApp={false}
               style={PopUpStyle}
               >
                 <>
-                  {isSetLoadSpinner ? (
+                {linkedinPostModalRender()}
+                {/* <PopUpModal
+                      title={{icon: <HiOutlineRocketLaunch></HiOutlineRocketLaunch>, title:"Sign in to post with Commit AI"}}
+                      closeButtonAction={handleClosePostModal}
+                      closeButtonName={"Cancel"}
+                      >
+                      <Button className="promptpage__signin-linkedin-btn" onClick={handleSubmitPostClick}>
+                        <img src={linkedinSignIn_small}/>
+                      </Button>
+                </PopUpModal> */}
+                  {/* {isSetLoadSpinner ? (
                     <PopUpModal
                       title={{icon: <HiOutlineRocketLaunch></HiOutlineRocketLaunch>, title:"Sign in to post with Commit AI"}}
                       closeButtonAction={handleClosePostModal}
                       closeButtonName={"Cancel"}
                       >
-                      <Button className="promptpage__signin-linkedin-btn" onClick={linkedInLogin}>
+                      <Button className="promptpage__signin-linkedin-btn" onClick={handleSubmitPostClick}>
                         <img src={linkedinSignIn_small}/>
                       </Button>
                     </PopUpModal>
-                    // <PromptHeader headerText={"hello"}></PromptHeader>
-                    // <div className="promptpage__linkedinpost-modal-signin">
-                    //   Sign in to post with Commit AI
-                    //   <Button className="promptpage__signin-linkedin-btn" onClick={linkedInLogin}>
-                    //     <img src={linkedinSignIn_small}/>
-                    //   </Button>
-                    //   <Button className="promptpage__cancel-btn" onClick={handleClosePostModal}>
-                    //     Cancel
-                    //   </Button>
-                    // </div>
-                      
+                    
                     ):(
                       successMessage ? (
                         <PopUpModal
@@ -127,7 +196,8 @@ const PromptPage = () => {
                       ):(
                         <LoadingSpinner></LoadingSpinner>
                       ) 
-                  )}
+                      
+                  )} */}
               </>
               
             </Modal>

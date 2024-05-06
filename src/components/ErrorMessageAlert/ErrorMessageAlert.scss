@@ -1,22 +1,22 @@
 @import '../../styles/partials/variables.scss';
 
-.successMessage-box {
+.errorMessage-box {
     background: #ffffff;
 }
-.successMessage-alert {
+.errorMessage-alert {
     margin: 10px 0;
     padding: 10px;
     border-radius: 3px 3px 3px 3px;
-    color: #227700;
-    background-color: #bdffcd;
+    color: rgb(119, 0, 0);
+    background-color: #ffbdbd;
     display: flex; /* Use flexbox */
     justify-content: center; /* Center horizontally */
     text-align: center; /* Align text content in the center */
 }
-.successMessage-msg {
+.errorMessage-msg {
     padding-left: 10px;
 }
-.successMessage-icon {
+.errorMessage-icon {
     margin: 10px auto; /* Adjust margin to center vertically */
     padding: 10px;
     background-color: #ffffff;
@@ -26,7 +26,7 @@
     text-align: center; /* Align text content in the center */
 
 }
-.successMessage__linkedin-btn {
+.errorMessage__linkedin-btn {
     margin: 10px auto; /* Adjust margin to center vertically */
     padding: 10px;
     display: flex; /* Use flexbox */
@@ -38,7 +38,7 @@
     cursor: pointer;
     font-size: 1rem;
 }
-.successMessage__close-btn {
+.errorMessage__close-btn {
     margin: 10px auto; /* Adjust margin to center vertically */
     padding: 10px;
     display: flex; /* Use flexbox */

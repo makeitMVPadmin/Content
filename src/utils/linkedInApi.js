@@ -20,33 +20,36 @@ import { addMessage } from './firebaseMessages';
 
 
  // get the user authorization token from linkedin login
- export const useLinkedInlogin = (content) => {
-    const [errorMessage, setErrorMessage] = useState("");
-    const [successMessage, setsuccessMessage] = useState("");
-    const [isSetLoadSpinner, setLoadSpinner] = useState(true);
-    const [linkedinRedirectPage, setLinkedinRedirectPage] = useState("");
-
+ export const useLinkedInlogin = (content, setsuccessMessage, setErrorMessage, setLoadSpinner) => {
+    // const [errorMessage1, setErrorMessage1] = useState("");
+    // const [successMessage1, setsuccessMessage1] = useState("");
+    // const [isSetLoadSpinner1, setLoadSpinner1] = useState(true);
+    // const [linkedinRedirectPage, setLinkedinRedirectPage] = useState("");
+    // isSetLoadSpinner="loading";
     const { linkedInLogin } = useLinkedIn({
         clientId: process.env.REACT_APP_LINKEDIN_CLIENT_ID,
         redirectUri: `${window.location.origin}/linkedin/callback`,
         onSuccess: (authCode) => {
-            const accessTokenData = getAccessTokenData(authCode, content);
-            setErrorMessage("");
-            setsuccessMessage("Successfully Posted on Linkedin");
-            setLoadSpinner(false);
+            setLoadSpinner("loading");
+            const accessTokenData = getAccessTokenData(authCode, content, setErrorMessage, setsuccessMessage, setLoadSpinner);
+            // setsuccessMessage("Successfully Posted on Linkedin");
+            // setLoadSpinner(null);
+            
         },
         scope: ["w_member_social","openid","profile","email"],
         onError: (error) => {
-            setLoadSpinner(false);
-            setErrorMessage(error.errorMessage);
+            // setErrorMessage(error.errorMessage);
+            // setLoadSpinner(null);
         },
     });
 
-    return {linkedInLogin, isSetLoadSpinner, errorMessage, successMessage, linkedinRedirectPage};
+
+    // return {linkedInLogin, isSetLoadSpinner1, errorMessage1, successMessage1, linkedinRedirectPage};
+    return {linkedInLogin};
 };
 
 // function that takes in Authorization code and returns the access token
-export async function getAccessTokenData(authCode, content){
+export async function getAccessTokenData(authCode, content, setErrorMessage, setsuccessMessage, setLoadSpinner){
     const queryParams  = queryString.stringify({
         grant_type: 'authorization_code',
         code: authCode,
@@ -65,7 +68,7 @@ export async function getAccessTokenData(authCode, content){
             {
                 headers: headers,
             });
-        const memberDetails = await getMemberDetails(responseData.data.access_token, content);
+        const memberDetails = await getMemberDetails(responseData.data.access_token, content, setErrorMessage, setsuccessMessage, setLoadSpinner);
         return memberDetails;
     }catch(error){
         return error.message;
@@ -74,7 +77,7 @@ export async function getAccessTokenData(authCode, content){
 }
 
 // function that takes in access token and return the member details
-export async function getMemberDetails(accessToken, content){
+export async function getMemberDetails(accessToken, content, setErrorMessage, setsuccessMessage, setLoadSpinner){
     const headers = {
         Authorization: `Bearer ${accessToken}`,
         "Access-Control-Allow-Origin": "*",
@@ -90,7 +93,7 @@ export async function getMemberDetails(accessToken, content){
         // const content = "This is a test. Posted using LinkedIn API. Date: "+time.toTimeString();
         
         if(memberDetails){
-            const postContent = await postContentToLinkedIn(accessToken, memberDetails, content);
+            const postContent = await postContentToLinkedIn(accessToken, memberDetails, content, setErrorMessage, setsuccessMessage, setLoadSpinner);
         }
         return memberDetails;
     }catch(error){
@@ -100,7 +103,7 @@ export async function getMemberDetails(accessToken, content){
 
 
 //  function that takes in access token, memberDetails, content and posts content to the linkedin
-export async function postContentToLinkedIn(accessToken, memberDetails, content){
+export async function postContentToLinkedIn(accessToken, memberDetails, content, setErrorMessage, setsuccessMessage, setLoadSpinner){
     const headers = {
         Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'application/json',
@@ -128,8 +131,6 @@ export async function postContentToLinkedIn(accessToken, memberDetails, content)
             {
                 headers:headers,
             });
-
-            //if the message is posted to the LinkedIn, add it to the Firebase collection
             var message = {
                 platform:"LinkedIn",
                 posted:true,
@@ -137,7 +138,19 @@ export async function postContentToLinkedIn(accessToken, memberDetails, content)
                 responses:content.responses,
                 userID:"", 
             }
-            const id = await addMessage(message);
+            if (postContent.status  === 200) {
+                //if the message is posted to the LinkedIn, add it to the Firebase collection
+                const id = await addMessage(message);
+                setsuccessMessage("Successfully Posted on Linkedin");
+                setErrorMessage(null);
+                setLoadSpinner(null);
+
+            }else{
+                setErrorMessage("Error posting to Linkedin");
+                setsuccessMessage(null);
+                setLoadSpinner(null);
+            }
+                        
             return postContent;
 
     }catch(error){

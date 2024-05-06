@@ -97,7 +97,6 @@ const EditPost = ({
         </div>
       )
 
-
     } else {
       return <BottomContentSections
         previewText={previewText}

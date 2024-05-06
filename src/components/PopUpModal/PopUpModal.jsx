@@ -30,14 +30,7 @@ const PopUpStyle = {
     }
 };
 
-// const handleOpenPostModal = () => {
-//     setModalOpen(true);
-// };
-
-// const handleClosePostModal = () =>{
-//     setModalOpen(false);
-// };
-const PopUpModal = ({title,closeButtonAction,closeButtonName,children}) => {
+const PopUpModal = ({title, closeButtonAction, closeButtonName, children}) => {
     return (
         <div className='modal__box'>
             <div className="modal__title">
