@@ -5,6 +5,8 @@ import PromptHeader from "../PromptHeader/PromptHeader";
 import { useState } from 'react';
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import BottomContentSections from "../BottomContentSections/BottomContentSections";
+import rocketIcon from '../../assets/icons/rocket.svg';
+
 
 const EditPost = ({
   inputText,
@@ -96,8 +98,6 @@ const EditPost = ({
           <LoadingSpinner />
         </div>
       )
-
-
     } else {
       return <BottomContentSections
         previewText={previewText}
@@ -111,11 +111,11 @@ const EditPost = ({
   return (
     <div className="promptpage__container">
       <div className="promptpage__input-container">
-        <PromptHeader headerText={"CommitAI Content Generator"} />
+        <PromptHeader headerText={"CommitAI Content Generator"} icon={rocketIcon}/>
         <div className="promptpage__sub-container">
           <div className="promptpage__mood-box">
             <h4>I would like to write a(n)</h4>
-            <select onChange={handlePostTypeSelect}>
+            <select className="promptpage__select" onChange={handlePostTypeSelect}>
               <option>Update or Achievement</option>
               <option>Event Announcement</option>
               <option>Job Opportunity</option>
@@ -123,7 +123,7 @@ const EditPost = ({
               <option>Industry Insight</option>
             </select>
             <h4> post in a</h4>
-            <select onChange={handleMoodSelect}>
+            <select className="promptpage__select" onChange={handleMoodSelect}>
               <option>Professional</option>
               <option>Witty</option>
               <option>Appreciative</option>
