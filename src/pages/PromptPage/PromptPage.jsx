@@ -13,6 +13,7 @@ const PromptPage = () => {
   const [previewText, setPreviewText] = useState("Preview here");
   const [activeTab, setActiveTab] = useState("edit");
 
+
   const handleInputChange = (e) => {
     setInputText(e.target.value);
   };

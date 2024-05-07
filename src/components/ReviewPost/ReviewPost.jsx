@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import InputBox from "../InputBox/InputBox";
 import PreviewBox from "../PreviewBox/PreviewBox";
 import Button from "../Button/Button";
+import "./ReviewPost.scss";
 
 const ReviewPost = ({ previewText, setPreviewText, setActivePage }) => {
   const [isEditing, setIsEditing] = useState(false);
-
 
   const handleToggleEditing = () => {
     setIsEditing(!isEditing);
@@ -32,10 +32,15 @@ const ReviewPost = ({ previewText, setPreviewText, setActivePage }) => {
 
   const editAndWordCount = () => {
     return (
-      <div>
-        {!isEditing ? <Button className="edit" onClick={handleToggleEditing}>
-          Edit
-        </Button> : null}
+      <div className="edit-btn-area">
+        <p className="word-count">{previewText.split(" ").length} / 2500</p>
+
+        {!isEditing ?
+          <Button className="edit" onClick={handleToggleEditing}>
+            Edit
+          </Button> :
+          null}
+
 
       </div>
     )
