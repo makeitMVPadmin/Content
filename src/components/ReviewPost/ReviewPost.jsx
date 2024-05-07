@@ -33,9 +33,10 @@ const ReviewPost = ({ previewText, setPreviewText, setActivePage }) => {
   const editAndWordCount = () => {
     return (
       <div>
-        <Button className="edit" onClick={handleToggleEditing}>
+        {!isEditing ? <Button className="edit" onClick={handleToggleEditing}>
           Edit
-        </Button>
+        </Button> : null}
+
       </div>
     )
   }
