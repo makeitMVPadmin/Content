@@ -21,25 +21,17 @@ import { addMessage } from './firebaseMessages';
 
  // get the user authorization token from linkedin login
  export const useLinkedInlogin = (content, setsuccessMessage, setErrorMessage, setLoadSpinner) => {
-    // const [errorMessage1, setErrorMessage1] = useState("");
-    // const [successMessage1, setsuccessMessage1] = useState("");
-    // const [isSetLoadSpinner1, setLoadSpinner1] = useState(true);
-    // const [linkedinRedirectPage, setLinkedinRedirectPage] = useState("");
-    // isSetLoadSpinner="loading";
-    const { linkedInLogin } = useLinkedIn({
+       const { linkedInLogin } = useLinkedIn({
         clientId: process.env.REACT_APP_LINKEDIN_CLIENT_ID,
         redirectUri: `${window.location.origin}/linkedin/callback`,
         onSuccess: (authCode) => {
             setLoadSpinner("loading");
             const accessTokenData = getAccessTokenData(authCode, content, setErrorMessage, setsuccessMessage, setLoadSpinner);
-            // setsuccessMessage("Successfully Posted on Linkedin");
-            // setLoadSpinner(null);
-            
+                       
         },
         scope: ["w_member_social","openid","profile","email"],
         onError: (error) => {
-            // setErrorMessage(error.errorMessage);
-            // setLoadSpinner(null);
+           
         },
     });
 
@@ -124,7 +116,6 @@ export async function postContentToLinkedIn(accessToken, memberDetails, content,
           "com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC"
         }
       };
-
     try{
         const postContent = await axios.post('https://cors-anywhere.herokuapp.com/https://api.linkedin.com/v2/ugcPosts', 
             data,

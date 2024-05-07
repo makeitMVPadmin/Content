@@ -19,7 +19,7 @@ import ErrorMessageAlert from "../../components/ErrorMessageAlert/ErrorMessageAl
 const PromptPage = () => {
   const [inputText, setInputText] = useState("");
   const [previewText, setPreviewText] = useState("Preview here");
-  const [activeTab, setActiveTab] = useState("review");
+  const [activeTab, setActiveTab] = useState("edit");
   const [isModalOpen, setModalOpen] = useState(false);
 
   const [errorMessage, setErrorMessage] = useState(null);
@@ -29,13 +29,13 @@ const PromptPage = () => {
 
 
   //remove after final 
-  var time = new Date();
-  const prompt = "This is a test Prompt. Posted using LinkedIn API. Date: " + time.toTimeString();
+  // var time = new Date();
+  // const prompt = "This is a test Prompt. Posted using LinkedIn API. Date: " + time.toTimeString();
   //remove after final 
 
   const content = {
     prompts: [inputText],
-    responses: [prompt],
+    responses: [previewText],
   };
 
   const handleInputChange = (e) => {
@@ -62,10 +62,9 @@ const PromptPage = () => {
   };
 
   const handleLinkedinRedirect = () => {
-    window.open("","_blank");
+    window.open("https://www.linkedin.com/in/","_blank");
   };
 
-  // const { linkedInLogin, isSetLoadSpinner1, successMessage1, errorMessage1 } = useLinkedInlogin(content, setsuccessMessage, setLoadSpinner);
   const { linkedInLogin } = useLinkedInlogin(content, setsuccessMessage, setErrorMessage, setLoadSpinner, setLinkedinRedirectPage);
 
   const handleSubmitPostClick = () => {
