@@ -2,10 +2,11 @@ import "./PromptPage.scss";
 import { useState } from "react";
 import EditPost from "../../components/EditPost/EditPost";
 import PromptPageTabs from "../../components/PromptPageTabs/PromptPageTabs";
-import Navbar from "../../components/Navbar/Navbar";
 import MockLinkedInPost from "../../components/MockLinkedInPost/MockLinkedInPost";
 import Button from "../../components/Button/Button";
-// import ReviewPost from "../../components/ReviewPost/ReviewPost";
+import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
+import CommitAIBanner from "../../components/CommitAIBanner/CommitAIBanner";
+import { Link } from "react-router-dom";
 
 const PromptPage = () => {
   const [inputText, setInputText] = useState("");
@@ -28,14 +29,23 @@ const PromptPage = () => {
     return (
       <>
         {activeTab === "edit" && (
-          <div className="promptpage__container">
-            <EditPost
-              inputText={inputText}
-              handleInputChange={handleInputChange}
-              setActivePage={setActiveTab}
-              setPreviewText={setPreviewText}
-              previewText={previewText}
-            />
+          <div className="promptpage__background-container">
+            <div className="promptpage__outer-container">
+              <div className="promptpage__container">
+                <EditPost
+                  inputText={inputText}
+                  handleInputChange={handleInputChange}
+                  setActivePage={setActiveTab}
+                  setPreviewText={setPreviewText}
+                  previewText={previewText}
+                />
+              </div>
+              <div className="promptpage__exit-area">
+                <Link to="/dashboard">
+                  <h3>&#60;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exit</h3>
+                </Link>
+              </div>
+            </div>
           </div>
         )}
         {activeTab === "review" && (
@@ -55,7 +65,8 @@ const PromptPage = () => {
   return (
     <div className="promptpage-container">
       <div className="promptpage">
-        <Navbar />
+        <DashboardNavbar />
+        <CommitAIBanner />
         <PromptPageTabs activeTab={activeTab} setActiveTab={setActiveTab} />
         {renderActiveTab()}
       </div>

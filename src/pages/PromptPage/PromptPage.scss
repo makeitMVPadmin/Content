@@ -32,7 +32,7 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 15px;
-    background-color: $Powder-Blue;
+    // background-color: $Powder-Blue;
   }
 
   &__navbar-item {
@@ -46,13 +46,28 @@
       flex-direction: row;
       justify-content: space-around;
       padding: 10px;
-      border-bottom: 8px solid rgb(58, 58, 58);
+      border-bottom: 5px solid $MVP-Dark-Blue;
     }
+  }
+
+  &__background-container {
+    width: 100%;
+    padding: 1rem;
+    background-color: #E1F0FB;
+  }
+
+  &__outer-container {
+    width: 100%;
+    background-color: white;
+    padding: 1rem;
+    border: 2px solid black;
+    border-radius: 8px;
   }
 
   &__container {
     width: 100%;
     border: 1px solid black;
+    border-radius: 8px;
     // This color is not in the MVP variables, but it's on the mockup
     background-color: #E1F0FB;
   }
@@ -182,8 +197,10 @@
     width: 100%;
   }
 
-  &__select {
-    background-color: #E1F0FB;
+  &__exit-area {
+    margin-top: 10px;
+    margin-left: 10px;
+    cursor: pointer;
   }
 
 }
