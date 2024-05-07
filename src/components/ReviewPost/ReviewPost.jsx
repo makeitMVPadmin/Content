@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import InputBox from "../InputBox/InputBox";
 import PreviewBox from "../PreviewBox/PreviewBox";
-import Button from "../Button/Button";
 import "./ReviewPost.scss";
 
 const ReviewPost = ({ previewText, setPreviewText, setActivePage }) => {
@@ -36,9 +35,9 @@ const ReviewPost = ({ previewText, setPreviewText, setActivePage }) => {
         <p className="word-count">{previewText.split(" ").length} / 2500</p>
 
         {!isEditing ?
-          <Button className="edit" onClick={handleToggleEditing}>
+          <p className="edit" onClick={handleToggleEditing}>
             Edit
-          </Button> :
+          </p> :
           null}
 
 
