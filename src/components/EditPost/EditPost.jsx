@@ -8,6 +8,7 @@ import BottomContentSections from "../BottomContentSections/BottomContentSection
 import rocketIcon from '../../assets/icons/rocket.svg';
 
 
+
 const EditPost = ({
   inputText,
   handleInputChange,

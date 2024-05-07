@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import InputBox from "../InputBox/InputBox";
 import PreviewBox from "../PreviewBox/PreviewBox";
 import "./ReviewPost.scss";
+import Variant3 from "../../assets/icons/Variant3.png";
 
 const ReviewPost = ({ previewText, setPreviewText, setActivePage }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -32,7 +33,8 @@ const ReviewPost = ({ previewText, setPreviewText, setActivePage }) => {
   const editAndWordCount = () => {
     return (
       <div className="edit-btn-area">
-        <p className="word-count">{previewText.split(" ").length} / 2500</p>
+
+        <p className="word-count"><img src={Variant3} alt="linked-in-logo"></img>&nbsp;&nbsp;{previewText.split(" ").length} / 2500</p>
 
         {!isEditing ?
           <p className="edit" onClick={handleToggleEditing}>
