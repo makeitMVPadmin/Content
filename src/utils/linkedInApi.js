@@ -138,10 +138,10 @@ export async function postContentToLinkedIn(accessToken, memberDetails, content,
                 responses:content.responses,
                 userID:"", 
             }
-            if (postContent.status  === 200) {
+            if (postContent.status  === 201) {
                 //if the message is posted to the LinkedIn, add it to the Firebase collection
                 const id = await addMessage(message);
-                setsuccessMessage("Successfully Posted on Linkedin");
+                setsuccessMessage("Successfully Posted on LinkedIn");
                 setErrorMessage(null);
                 setLoadSpinner(null);
 

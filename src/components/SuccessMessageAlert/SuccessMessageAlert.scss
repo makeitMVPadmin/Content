@@ -2,19 +2,23 @@
 
 .successMessage-box {
     background: #ffffff;
+  	position:relative;
 }
 .successMessage-alert {
     margin: 10px 0;
-    padding: 10px;
+    // padding-right: 30px;
+    // padding-left: 30px;
+    padding:10px;
     border-radius: 3px 3px 3px 3px;
-    color: #227700;
-    background-color: #bdffcd;
+    color: #0AC21C;
+    // background-color: #bdffcd;
     display: flex; /* Use flexbox */
     justify-content: center; /* Center horizontally */
     text-align: center; /* Align text content in the center */
 }
 .successMessage-msg {
     padding-left: 10px;
+    font-size:14px;
 }
 .successMessage-icon {
     margin: 10px auto; /* Adjust margin to center vertically */
@@ -36,7 +40,7 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 24px;
 }
 .successMessage__close-btn {
     margin: 10px auto; /* Adjust margin to center vertically */

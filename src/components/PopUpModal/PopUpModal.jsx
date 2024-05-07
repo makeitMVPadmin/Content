@@ -1,7 +1,6 @@
 import './PopUpModal.scss';
 import Button from '../Button/Button';
 
-
 const PopUpStyle = {
     overlay: {
         position: 'fixed',
@@ -10,7 +9,7 @@ const PopUpStyle = {
         right: 0,
         bottom: 0,
         backgroundColor: 'rgba(217, 217, 217, 0.85)'
-      },
+    },
     content: {
         position: 'absolute',
         top: '20%',
@@ -25,24 +24,35 @@ const PopUpStyle = {
         WebkitOverflowScrolling: 'touch',
         borderRadius: '24px',
         outline: 'none',
-        padding: '2%'
-        
+        padding: '10px'
+
     }
 };
 
-const PopUpModal = ({title, closeButtonAction, closeButtonName, children}) => {
+const PopUpModal = ({ title, closeButtonAction, closeButtonName, children }) => {
     return (
-        <div className='modal__box'>
-            <div className="modal__title">
-                <h4>{title.icon} {title.title}</h4>
+        <>
+            <div class="modal">
+                <div class="content">
+                    <div className="popUpModal">
+                        <div className="header">
+                            <div className="bodyTitleOutput">
+                                {title.icon && <img className="iconBodyTitle" alt="" src={title.icon} />}
+                                <div className="titleBodyTitle">{title.title}</div>
+                            </div>
+                        </div>
+                        <div className="children">
+                            {children}
+                        </div>
+                        <div className="buttonCancel">
+                            <Button className="close-btn" onClick={closeButtonAction}>
+                                {closeButtonName}
+                            </Button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div className="modal__children">
-                {children}
-            </div>
-            <Button className="modal__close-btn" onClick={closeButtonAction}>
-                {closeButtonName}
-            </Button>
-        </div>
+        </>
     );
 };
 
