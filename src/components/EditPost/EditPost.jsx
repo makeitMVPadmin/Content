@@ -20,7 +20,6 @@ const EditPost = ({
   const [postType, setPostType] = useState("update or achievement")
   const [tempVal, setTempVal] = useState(0.02);
   const [contentMinSize, setContentMinSize] = useState(0);
-  const [contentMaxSize, setContentMaxSize] = useState(50);
   const [aiResponseLoading, setAiResponseLoading] = useState(null);
 
   const requestObj = {
@@ -28,7 +27,7 @@ const EditPost = ({
       {
         role: "system",
         content:
-          `You are a friendly assistant, that gives responses to a community organizer appropriate for LinkedIn posting in JSON format, just post content between 200 and 2000 characters in length, no title. The key should be 'content'. The type of post should be ${postType}. Don't include any extra text outside of the post content itself, including hashtags. Don't say you will create the post, just give me the content. Please make the overall tone of your response ${toneVal} in nature. Finally, make your response between ${contentMinSize} and ${contentMaxSize} words in length.`,
+          `You are a friendly assistant, that gives responses to a community organizer appropriate for LinkedIn posting in JSON format, just post content between 200 and 2000 characters in length, no title. The key should be 'content'. The type of post should be ${postType}. Don't include any extra text outside of the post content itself, including hashtags. Don't say you will create the post, just give me the content. Please make the overall tone of your response ${toneVal} in nature. Please strive to make your response at least ${contentMinSize} words in length.`,
       },
       {
         role: "user",
@@ -66,13 +65,10 @@ const EditPost = ({
     // is affecting size, but number of words doesn't exactly match
     if (e.target.value === "small") {
       setContentMinSize(10);
-      setContentMaxSize(50);
     } else if (e.target.value === "med") {
-      setContentMinSize(51);
-      setContentMaxSize(200);
+      setContentMinSize(50);
     } else if (e.target.value ==="large") {
-      setContentMinSize(201);
-      setContentMaxSize(500);
+      setContentMinSize(100);
     }
   }
 
