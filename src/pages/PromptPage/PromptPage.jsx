@@ -21,7 +21,7 @@ import Variant3 from "../../assets/icons/Variant3.png";
 const PromptPage = () => {
   const [inputText, setInputText] = useState("");
   const [previewText, setPreviewText] = useState("Preview here");
-  const [activeTab, setActiveTab] = useState("edit");
+  const [activeTab, setActiveTab] = useState("review");
   const [isModalOpen, setModalOpen] = useState(false);
 
   const [errorMessage, setErrorMessage] = useState(null);
@@ -59,7 +59,7 @@ const PromptPage = () => {
   };
 
   const handleLinkedinRedirect = () => {
-    window.open("https://www.linkedin.com/in/","_blank");
+    window.open("https://www.linkedin.com/in/", "_blank");
   };
 
   const { linkedInLogin } = useLinkedInlogin(content, setsuccessMessage, setErrorMessage, setLoadSpinner);
@@ -152,25 +152,31 @@ const PromptPage = () => {
           </div>
         )}
         {activeTab === "review" && (
-          <div className="promptpage_container">
-            <button onClick={handleBackClick}>Back</button>
-            <MockLinkedInPost previewText={previewText}></MockLinkedInPost>
-            <Button className="promptpage__post-btn" onClick={handleOpenPostModal}>
-              Post on LinkedIn
-            </Button>
+          <div className="promptpage__background-container">
+            <div className="promptpage__outer-container">
+              <div className="promptpage__container">
+                <div className="promptpage_container">
+                  <button onClick={handleBackClick}>Back</button>
+                  <MockLinkedInPost previewText={previewText}></MockLinkedInPost>
+                  <Button className="promptpage__post-btn" onClick={handleOpenPostModal}>
+                    Post on LinkedIn
+                  </Button>
 
-            <Modal
-              id="promptpage__linkedinpost-modal"
-              isOpen={isModalOpen}
-              onRequestClose={handleClosePostModal}
-              ariaHideApp={false}
-              className="modalStyle"
-              overlayClassName="modalOverlay"
-            >
-              <>
-                {linkedinPostModalRender()}
-              </>
-            </Modal>
+                  <Modal
+                    id="promptpage__linkedinpost-modal"
+                    isOpen={isModalOpen}
+                    onRequestClose={handleClosePostModal}
+                    ariaHideApp={false}
+                    className="modalStyle"
+                    overlayClassName="modalOverlay"
+                  >
+                    <>
+                      {linkedinPostModalRender()}
+                    </>
+                  </Modal>
+                </div>
+              </div>
+            </div>
           </div>
         )}
       </>
