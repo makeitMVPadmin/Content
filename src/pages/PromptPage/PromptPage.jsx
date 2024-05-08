@@ -115,9 +115,6 @@ const PromptPage = () => {
         >
           <ErrorMessageAlert>
           </ErrorMessageAlert>
-          {/* <Button className="colorButton" onClick={handleClosePostModal}>
-            Close
-          </Button> */}
           <Button className="successMessage__linkedin-btn" onClick={handleClosePostModal}>
             Close
           </Button>
