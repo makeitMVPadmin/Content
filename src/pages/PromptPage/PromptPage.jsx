@@ -46,9 +46,6 @@ const PromptPage = () => {
     setModalOpen(true);
   };
 
-  const handlePostClick = () => {
-    setActiveTab("review");
-  }
   const handleClosePostModal = () => {
     setModalOpen(false);
     setErrorMessage(null);
@@ -150,11 +147,6 @@ const PromptPage = () => {
                 <Link style={{color: "black"}} className="promptpage__back-btn" to="/dashboard">
                   <h3>&#60; Exit</h3>
                 </Link>
-                <Button
-                  className="preview"
-                  onClick={handlePostClick}>
-                    Preview Post
-                </Button>
               </div>
             </div>
           </div>
