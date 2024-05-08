@@ -51,6 +51,7 @@ const PromptPage = () => {
   const handleBackToCommitAi = () => {
     handleClosePostModal();
     setActiveTab("edit");
+    setInputText("");
   };
 
   const handleLinkedinRedirect = () => {
@@ -63,7 +64,6 @@ const PromptPage = () => {
     // handle submission thru LinkedIn here
     setLoadSpinner("loading");
     linkedInLogin();
-    // setErrorMessage("Error posting to LinkedkIn");
     setLoadSpinner(null);
 
   };
@@ -81,7 +81,7 @@ const PromptPage = () => {
     } else if (successMessage === null && errorMessage === null && isSetLoadSpinner === null) {
       return (
         <PopUpModal
-          title={{ icon: rocketAiIcon, title: "Sign In to post with CommitAi" }}
+          title={{ icon: rocketAiIcon, title: "Sign In to post with CommitAI" }}
           closeButtonAction={handleClosePostModal}
           closeButtonName={"Cancel"}
         >
@@ -95,11 +95,10 @@ const PromptPage = () => {
       return (
         <PopUpModal
           title={{ title: "Your post has been created!" }}
-          closeButtonName="Back to CommitAi"
+          closeButtonName="Back to CommitAI"
           closeButtonAction={handleBackToCommitAi}
         >
           <SuccessMessageAlert
-            message={successMessage}
             redirectPage={handleClosePostModal}
           >
           </SuccessMessageAlert>
@@ -111,14 +110,17 @@ const PromptPage = () => {
     } else if (errorMessage !== null) {
       return (
         <PopUpModal
-          title={{ title: "Your post has not been created!" }}
+          title={{ title: "Your post has NOT been created!" }}
           closeButtonName="Close"
-          closeButtonAction={handleClosePostModal}
         >
-          <ErrorMessageAlert
-            message={errorMessage}>
+          <ErrorMessageAlert>
           </ErrorMessageAlert>
-
+          {/* <Button className="colorButton" onClick={handleClosePostModal}>
+            Close
+          </Button> */}
+          <Button className="successMessage__linkedin-btn" onClick={handleClosePostModal}>
+            Close
+          </Button>
         </PopUpModal>
       )
     }

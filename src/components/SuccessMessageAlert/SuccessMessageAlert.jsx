@@ -10,10 +10,12 @@ const SuccessMessageAlert = ({message, children}) => {
                 <img src={successCheckMark}></img>
             </div>
             {children}
+            {message &&
             <div className="successMessage-alert">
                 <FaCheck />
                 <span className="successMessage-msg">{message}</span>
             </div>
+            }
         </div>
         
     )

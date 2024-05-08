@@ -44,11 +44,13 @@ const PopUpModal = ({ title, closeButtonAction, closeButtonName, children }) => 
                         <div className="children">
                             {children}
                         </div>
+                        {closeButtonAction &&
                         <div className="buttonCancel">
                             <Button className="close-btn" onClick={closeButtonAction}>
                                 {closeButtonName}
                             </Button>
                         </div>
+                        }
                     </div>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 import Button from '../Button/Button';
 import './ErrorMessageAlert.scss';
 import { LiaTimesCircleSolid } from "react-icons/lia";
-import errorIcon from '../../assets/images/warning.png';
+import errorIcon from '../../assets/images/error.png';
 
 const ErrorMessageAlert = ({ message, redirectPage, children }) => {
     return (
@@ -10,11 +10,12 @@ const ErrorMessageAlert = ({ message, redirectPage, children }) => {
                 <img width="100px" height="100px" src={errorIcon}></img>
             </div>
             {children}
+            {message &&
             <div className="errorMessage-alert">
                 <LiaTimesCircleSolid />
                 <span className="errorMessage-msg">{message}</span>
             </div>
-            
+            }
         </div>
 
     )
