@@ -16,6 +16,7 @@ import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
 import CommitAIBanner from "../../components/CommitAIBanner/CommitAIBanner";
 import { Link } from "react-router-dom";
 import Variant3 from "../../assets/icons/Variant3.png";
+import linkedinIconWhite from "../../assets/logos/linkedinIconWhite.svg";
 
 const PromptPage = () => {
   const [inputText, setInputText] = useState("");
@@ -66,7 +67,8 @@ const PromptPage = () => {
   const handleSubmitPostClick = () => {
     // handle submission thru LinkedIn here
     setLoadSpinner("loading");
-    linkedInLogin();
+    setsuccessMessage("success");
+    // linkedInLogin();
     setLoadSpinner(null);
 
   };
@@ -106,7 +108,7 @@ const PromptPage = () => {
           >
           </SuccessMessageAlert>
           <Button className="successMessage__linkedin-btn" onClick={handleLinkedinRedirect}>
-            Go to Linkedin
+            <div>Go to Linkedin <img src={linkedinIconWhite} /></div>
           </Button>
         </PopUpModal>
       )

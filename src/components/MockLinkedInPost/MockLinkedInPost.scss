@@ -65,14 +65,18 @@
 .post-image {
   margin-top: 10px;
   width: 100%;
-  height: 250px;
-
   @include Tablet {
-    width:400px;
+    width: 400px;
+    height: 250px;
+
   } 
+  @include Mobile{
+    height: 175px;
+  }
 
   @include Desktop {
-    width:400px;
+    width: 400px;
+    height: 250px;
   }
 }
 
