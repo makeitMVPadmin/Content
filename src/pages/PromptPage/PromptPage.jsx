@@ -14,7 +14,6 @@ import { PopUpModal, PopUpStyle } from "../../components/PopUpModal/PopUpModal";
 import { HiOutlineRocketLaunch } from "react-icons/hi2";
 import rocketAiIcon from "../../assets/images/rocketAiIcon.svg";
 import ErrorMessageAlert from "../../components/ErrorMessageAlert/ErrorMessageAlert";
-// import ReviewPost from "../../components/ReviewPost/ReviewPost";
 
 const PromptPage = () => {
   const [inputText, setInputText] = useState("");
@@ -25,13 +24,6 @@ const PromptPage = () => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [successMessage, setsuccessMessage] = useState(null);
   const [isSetLoadSpinner, setLoadSpinner] = useState(null);
-  const [linkedinRedirectPage, setLinkedinRedirectPage] = useState("")
-
-
-  //remove after final 
-  // var time = new Date();
-  // const prompt = "This is a test Prompt. Posted using LinkedIn API. Date: " + time.toTimeString();
-  //remove after final 
 
   const content = {
     prompts: [inputText],
@@ -65,14 +57,13 @@ const PromptPage = () => {
     window.open("https://www.linkedin.com/in/","_blank");
   };
 
-  const { linkedInLogin } = useLinkedInlogin(content, setsuccessMessage, setErrorMessage, setLoadSpinner, setLinkedinRedirectPage);
+  const { linkedInLogin } = useLinkedInlogin(content, setsuccessMessage, setErrorMessage, setLoadSpinner);
 
   const handleSubmitPostClick = () => {
     // handle submission thru LinkedIn here
     setLoadSpinner("loading");
     linkedInLogin();
-    // setsuccessMessage("Successfully Posted on Linkedin");
-    // setErrorMessage("Error posting to LinkedIn")
+    // setErrorMessage("Error posting to LinkedkIn");
     setLoadSpinner(null);
 
   };
@@ -134,8 +125,6 @@ const PromptPage = () => {
   };
 
 
-
-
   const renderActiveTab = () => {
     return (
       <>
@@ -162,61 +151,15 @@ const PromptPage = () => {
               id="promptpage__linkedinpost-modal"
               isOpen={isModalOpen}
               onRequestClose={handleClosePostModal}
-              // onAfterOpen={linkedinPostModalRender}
               ariaHideApp={false}
-              // style={PopUpStyle}
               className="modalStyle"
               overlayClassName="modalOverlay"
             >
               <>
                 {linkedinPostModalRender()}
-                {/* <PopUpModal
-                      title={{icon: <HiOutlineRocketLaunch></HiOutlineRocketLaunch>, title:"Sign in to post with Commit AI"}}
-                      closeButtonAction={handleClosePostModal}
-                      closeButtonName={"Cancel"}
-                      >
-                      <Button className="promptpage__signin-linkedin-btn" onClick={handleSubmitPostClick}>
-                        <img src={linkedinSignIn_small}/>
-                      </Button>
-                </PopUpModal> */}
-                {/* {isSetLoadSpinner ? (
-                    <PopUpModal
-                      title={{icon: <HiOutlineRocketLaunch></HiOutlineRocketLaunch>, title:"Sign in to post with Commit AI"}}
-                      closeButtonAction={handleClosePostModal}
-                      closeButtonName={"Cancel"}
-                      >
-                      <Button className="promptpage__signin-linkedin-btn" onClick={handleSubmitPostClick}>
-                        <img src={linkedinSignIn_small}/>
-                      </Button>
-                    </PopUpModal>
-                    
-                    ):(
-                      successMessage ? (
-                        <PopUpModal
-                          title={{title:"Your post has been created!"}}
-                          closeButtonName="Close"
-                          closeButtonAction={handleClosePostModal}
-                          >
-                          <SuccessMessageAlert 
-                            message={successMessage}
-                            redirectPage={handleClosePostModal}
-                            >
-                          </SuccessMessageAlert>
-                          <Button className="successMessage__linkedin-btn" onClick={handleLinkedinRedirect}>
-                            Go to Linkedin
-                          </Button>
-                        </PopUpModal>
-                        
-                      ):(
-                        <LoadingSpinner></LoadingSpinner>
-                      ) 
-                      
-                  )} */}
               </>
-
             </Modal>
           </div>
-
         )}
       </>
     );

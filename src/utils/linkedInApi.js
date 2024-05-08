@@ -35,8 +35,6 @@ import { addMessage } from './firebaseMessages';
         },
     });
 
-
-    // return {linkedInLogin, isSetLoadSpinner1, errorMessage1, successMessage1, linkedinRedirectPage};
     return {linkedInLogin};
 };
 
@@ -80,9 +78,6 @@ export async function getMemberDetails(accessToken, content, setErrorMessage, se
             {
                 headers: headers,
             });
-
-        // var time = new Date();
-        // const content = "This is a test. Posted using LinkedIn API. Date: "+time.toTimeString();
         
         if(memberDetails){
             const postContent = await postContentToLinkedIn(accessToken, memberDetails, content, setErrorMessage, setsuccessMessage, setLoadSpinner);

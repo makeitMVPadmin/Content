@@ -6,12 +6,9 @@
 }
 .successMessage-alert {
     margin: 10px 0;
-    // padding-right: 30px;
-    // padding-left: 30px;
     padding:10px;
     border-radius: 3px 3px 3px 3px;
     color: #0AC21C;
-    // background-color: #bdffcd;
     display: flex; /* Use flexbox */
     justify-content: center; /* Center horizontally */
     text-align: center; /* Align text content in the center */
@@ -47,7 +44,6 @@
     padding: 10px;
     display: flex; /* Use flexbox */
     color: $MVP-Dark-Blue;
-    // background-color: ;
     border: none;
     border-radius: 5px;
     cursor: pointer;

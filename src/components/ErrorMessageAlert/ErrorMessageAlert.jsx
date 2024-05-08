@@ -3,8 +3,6 @@ import './ErrorMessageAlert.scss';
 import { LiaTimesCircleSolid } from "react-icons/lia";
 import errorIcon from '../../assets/images/warning.png';
 
-// import errorCheckMark from '../../assets/images/errorCheckMark.svg';
-
 const ErrorMessageAlert = ({ message, redirectPage, children }) => {
     return (
         <div className='errorMessage-Box'>
