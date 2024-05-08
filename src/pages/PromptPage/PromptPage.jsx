@@ -143,8 +143,8 @@ const PromptPage = () => {
                 />
               </div>
               <div className="promptpage__exit-area">
-                <Link to="/dashboard">
-                  <h3>&#60;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exit</h3>
+                <Link style={{color: "black"}} className="promptpage__back-btn" to="/dashboard">
+                  <h3>&#60; Exit</h3>
                 </Link>
               </div>
             </div>
