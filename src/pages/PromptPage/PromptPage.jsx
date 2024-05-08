@@ -67,8 +67,7 @@ const PromptPage = () => {
   const handleSubmitPostClick = () => {
     // handle submission thru LinkedIn here
     setLoadSpinner("loading");
-    setsuccessMessage("success");
-    // linkedInLogin();
+    linkedInLogin();
     setLoadSpinner(null);
 
   };
