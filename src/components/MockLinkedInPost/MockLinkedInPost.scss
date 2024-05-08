@@ -1,11 +1,35 @@
+@import '../../styles/partials/_mixins.scss';
+@import '../../styles/partials/variables.scss';
+
+.mockLinkedinPost{
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    // align-items: flex-end;
+    justify-content: center;
+    font-family: Gilroy;
+}
 #post {
   border: 1px solid lightgray;
   width: fit-content;
   font-family: "Inter", sans-serif;
   font-size: 14px;
-  width: 400px;
+  width:calc(100% - 80px);
+  @include Tablet {
+    width:400px;
+    margin: 20px;
+  }
+
+  @include Mobile {
+    margin: 10px;
+  }
+
+  @include Desktop {
+    width:400px;
+    margin: 20px;
+  }
   border-radius: 8px;
-  margin: 20px;
   background-color: white;
 }
 
@@ -18,7 +42,7 @@
 .author-info {
   display: flex;
   flex-direction: column;
-  color: gray;
+  color: rgb(0, 0, 0);
   align-items: flex-start;
   margin-left: 5px;
 }
@@ -29,17 +53,27 @@
 
 .author-followers {
   font-size: 14px;
+  color:rgb(0,0,0, 60%);
 }
 
 .post-text {
   text-wrap: wrap;
   padding: 10px;
+  color: rgb(0, 0, 0);
 }
 
 .post-image {
   margin-top: 10px;
+  width: 100%;
   height: 250px;
-  width: 400px;
+
+  @include Tablet {
+    width:400px;
+  } 
+
+  @include Desktop {
+    width:400px;
+  }
 }
 
 .post-interactions {
@@ -58,6 +92,10 @@
   display: flex;
   justify-content: space-evenly;
   padding: 10px;
+  @include Mobile{
+    padding-left: 2px;
+    padding-right: 2px;
+  }
   border-top: 1px solid lightgray;
 }
 
@@ -71,4 +109,11 @@
 
 .action > span {
   margin-left: 3px;
+}
+
+@media only screen and (max-width: $Tablet) {
+  .action > span {
+    display: none;
+      
+  }
 }

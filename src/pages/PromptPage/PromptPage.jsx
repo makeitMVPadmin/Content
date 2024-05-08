@@ -155,7 +155,7 @@ const PromptPage = () => {
             <div className="promptpage__outer-container">
               <div className="promptpage_container">
                 <div className="promptpage__container">
-                  <MockLinkedInPost previewText={previewText}></MockLinkedInPost>
+                  <MockLinkedInPost previewText={previewText} userName={"Steph.Ai"}></MockLinkedInPost>
                   <Modal
                     id="promptpage__linkedinpost-modal"
                     isOpen={isModalOpen}
