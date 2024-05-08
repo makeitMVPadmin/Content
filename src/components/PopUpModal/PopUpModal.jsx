@@ -1,6 +1,7 @@
 import './PopUpModal.scss';
 import Button from '../Button/Button';
 
+//to be passed in to the style prop of Modal component
 const PopUpStyle = {
     overlay: {
         position: 'fixed',
@@ -19,7 +20,6 @@ const PopUpStyle = {
         width: '500px',
         height: '50%',
         border: 'none',
-        // background: 'rgba(100, 100, 100, 1)',
         overflow: 'auto',
         WebkitOverflowScrolling: 'touch',
         borderRadius: '24px',
@@ -32,8 +32,8 @@ const PopUpStyle = {
 const PopUpModal = ({ title, closeButtonAction, closeButtonName, children }) => {
     return (
         <>
-            <div class="modal">
-                <div class="content">
+            <div className="modal">
+                <div className="content">
                     <div className="popUpModal">
                         <div className="header">
                             <div className="bodyTitleOutput">
