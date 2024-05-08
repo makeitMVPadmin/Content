@@ -16,6 +16,7 @@ import ErrorMessageAlert from "../../components/ErrorMessageAlert/ErrorMessageAl
 import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
 import CommitAIBanner from "../../components/CommitAIBanner/CommitAIBanner";
 import { Link } from "react-router-dom";
+import Variant3 from "../../assets/icons/Variant3.png";
 
 const PromptPage = () => {
   const [inputText, setInputText] = useState("");
@@ -31,6 +32,7 @@ const PromptPage = () => {
     prompts: [inputText],
     responses: [previewText],
   };
+
 
   const handleInputChange = (e) => {
     setInputText(e.target.value);
