@@ -134,7 +134,7 @@ const PromptPage = () => {
         {activeTab === "edit" && (
           <div className="promptpage__background-container">
             <div className="promptpage__outer-container">
-              <div className="promptpage__container">
+              <div className="promptpage_container">
                 <EditPost
                   inputText={inputText}
                   handleInputChange={handleInputChange}
