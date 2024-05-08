@@ -28,21 +28,22 @@
 
 }
 .successMessage__linkedin-btn {
-    margin: 10px auto; /* Adjust margin to center vertically */
-    padding: 10px;
+    margin: 62px auto; /* Adjust margin to center vertically */
     display: flex; /* Use flexbox */
     color: white;
     background-color: $MVP-Dark-Blue;
     padding: 8px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 24px;
 }
 .successMessage__linkedin-btn img{
-    align-items: center;
-    justify-content: center;
-}
+    margin-left: 8px;
+    margin-top: 3px;
+    vertical-align: middle; 
+  }
+
 .successMessage__close-btn {
     margin: 10px auto; /* Adjust margin to center vertically */
     padding: 10px;

@@ -21,7 +21,7 @@ import linkedinIconWhite from "../../assets/logos/linkedinIconWhite.svg";
 const PromptPage = () => {
   const [inputText, setInputText] = useState("");
   const [previewText, setPreviewText] = useState("Preview here");
-  const [activeTab, setActiveTab] = useState("review");
+  const [activeTab, setActiveTab] = useState("edit");
   const [isModalOpen, setModalOpen] = useState(false);
 
   const [errorMessage, setErrorMessage] = useState(null);
@@ -107,7 +107,7 @@ const PromptPage = () => {
           >
           </SuccessMessageAlert>
           <Button className="successMessage__linkedin-btn" onClick={handleLinkedinRedirect}>
-            <div>Go to Linkedin <img src={linkedinIconWhite} /></div>
+            Go to Linkedin <img src={linkedinIconWhite} />
           </Button>
         </PopUpModal>
       )
