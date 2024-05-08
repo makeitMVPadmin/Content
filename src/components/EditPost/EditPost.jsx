@@ -5,6 +5,8 @@ import PromptHeader from "../PromptHeader/PromptHeader";
 import { useState } from 'react';
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import BottomContentSections from "../BottomContentSections/BottomContentSections";
+import rocketIcon from '../../assets/icons/rocket.svg';
+
 
 const EditPost = ({
   inputText,
@@ -96,7 +98,6 @@ const EditPost = ({
           <LoadingSpinner />
         </div>
       )
-
     } else {
       return <BottomContentSections
         previewText={previewText}
@@ -110,19 +111,19 @@ const EditPost = ({
   return (
     <div className="promptpage__container">
       <div className="promptpage__input-container">
-        <PromptHeader headerText={"CommitAI Content Generator"} />
+        <PromptHeader headerText={"CommitAI Content Generator"} icon={rocketIcon}/>
         <div className="promptpage__sub-container">
           <div className="promptpage__mood-box">
-            <h4>I would like to write a(n)</h4>
-            <select onChange={handlePostTypeSelect}>
+            <h3>I would like to write a(n)</h3>
+            <select className="promptpage__select" onChange={handlePostTypeSelect}>
               <option>Update or Achievement</option>
               <option>Event Announcement</option>
               <option>Job Opportunity</option>
               <option>Educational Content</option>
               <option>Industry Insight</option>
             </select>
-            <h4> post in a</h4>
-            <select onChange={handleMoodSelect}>
+            <h3> post in a</h3>
+            <select className="promptpage__select" onChange={handleMoodSelect}>
               <option>Professional</option>
               <option>Witty</option>
               <option>Appreciative</option>
@@ -130,15 +131,13 @@ const EditPost = ({
               <option>Engaging</option>
               <option>Motivating</option>
             </select>
-            <h4>tone</h4>
+            <h3>tone</h3>
           </div>
-          <h4>What do you want to share?</h4>
           <InputBox
             value={inputText}
             onChange={handleInputChange}
             placeholder="What is this about?"
             className="promptpage__input-box"
-            labelVal="Give AI specific instructions for your content"
           />
           <h4>Output size</h4>
           {/* this will need to be within form, along with everything else */}
@@ -153,7 +152,7 @@ const EditPost = ({
         </div>
         <Button
           className="generate"
-          onClick={handleGenerateButtonClick}>Generate Social Post Test
+          onClick={handleGenerateButtonClick}>Generate Content
         </Button>
 
         {bottomRender()}
