@@ -144,6 +144,15 @@
     cursor: pointer;
     font-size: 1rem;
   }
+  &__close-btn{
+    color: white;
+    background-color: $MVP-Dark-Blue;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
 
   &__choice-selection {
     display: flex;
@@ -236,4 +245,6 @@
     cursor: pointer;
   }
 
+
 }
+

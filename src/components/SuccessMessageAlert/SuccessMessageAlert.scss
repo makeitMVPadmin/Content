@@ -1,0 +1,51 @@
+@import '../../styles/partials/variables.scss';
+
+.successMessage-box {
+    background: #ffffff;
+  	position:relative;
+}
+.successMessage-alert {
+    margin: 10px 0;
+    padding:10px;
+    border-radius: 3px 3px 3px 3px;
+    color: #0AC21C;
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center horizontally */
+    text-align: center; /* Align text content in the center */
+}
+.successMessage-msg {
+    padding-left: 10px;
+    font-size:14px;
+}
+.successMessage-icon {
+    margin: 10px auto; /* Adjust margin to center vertically */
+    padding: 10px;
+    background-color: #ffffff;
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    text-align: center; /* Align text content in the center */
+
+}
+.successMessage__linkedin-btn {
+    margin: 10px auto; /* Adjust margin to center vertically */
+    padding: 10px;
+    display: flex; /* Use flexbox */
+    color: white;
+    background-color: $MVP-Dark-Blue;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 24px;
+}
+.successMessage__close-btn {
+    margin: 10px auto; /* Adjust margin to center vertically */
+    padding: 10px;
+    display: flex; /* Use flexbox */
+    color: $MVP-Dark-Blue;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
