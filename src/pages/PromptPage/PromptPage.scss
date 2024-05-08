@@ -71,16 +71,15 @@
     border-radius: 8px;
     // This color is not in the MVP variables, but it's on the mockup
     background-color: #E1F0FB;
-    border: 2px black solid;
-
+    border: 3px black solid;
   }
 
   &__input-container {
-    border: 1px solid black;
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    border-radius: 8px;
   }
 
   &__input-container>* {
@@ -146,7 +145,8 @@
     cursor: pointer;
     font-size: 1rem;
   }
-  &__close-btn{
+
+  &__close-btn {
     color: white;
     background-color: $MVP-Dark-Blue;
     padding: 8px;
@@ -197,10 +197,42 @@
 
   &__post-btn {
     background-color: $MVP-Yellow;
+    width: 160px;
     padding: 8px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 20px;
+    align-items: center;
+    text-align: center;
+  }
+
+  &__back-btn {
+    background-color: white;
+    width: 160px;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    border: 0px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    // align-items: center;
+    // justify-content: flex-start;
+    box-sizing: border-box;
+  }
+
+  .btn-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+    text-align: center;
+    font-size: 24px;
+    font-family: Gilroy;
+    padding-top:12px;
   }
 
   &__mood-box {
@@ -249,4 +281,3 @@
 
 
 }
-

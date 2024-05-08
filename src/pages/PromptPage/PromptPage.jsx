@@ -10,7 +10,6 @@ import { useLinkedInlogin } from "../../utils/linkedInApi";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import SuccessMessageAlert from "../../components/SuccessMessageAlert/SuccessMessageAlert";
 import { PopUpModal, PopUpStyle } from "../../components/PopUpModal/PopUpModal";
-import { HiOutlineRocketLaunch } from "react-icons/hi2";
 import rocketAiIcon from "../../assets/images/rocketAiIcon.svg";
 import ErrorMessageAlert from "../../components/ErrorMessageAlert/ErrorMessageAlert";
 import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
@@ -154,14 +153,9 @@ const PromptPage = () => {
         {activeTab === "review" && (
           <div className="promptpage__background-container">
             <div className="promptpage__outer-container">
-              <div className="promptpage__container">
-                <div className="promptpage_container">
-                  <button onClick={handleBackClick}>Back</button>
+              <div className="promptpage_container">
+                <div className="promptpage__container">
                   <MockLinkedInPost previewText={previewText}></MockLinkedInPost>
-                  <Button className="promptpage__post-btn" onClick={handleOpenPostModal}>
-                    Post on LinkedIn
-                  </Button>
-
                   <Modal
                     id="promptpage__linkedinpost-modal"
                     isOpen={isModalOpen}
@@ -175,6 +169,12 @@ const PromptPage = () => {
                     </>
                   </Modal>
                 </div>
+              </div>
+              <div className="btn-container">
+                <Button className="promptpage__back-btn" onClick={handleBackClick}>&#60; Back</Button>
+                <Button className="promptpage__post-btn" onClick={handleOpenPostModal}>
+                  Post
+                </Button>
               </div>
             </div>
           </div>
