@@ -178,6 +178,7 @@ const PromptPage = () => {
                     ariaHideApp={false}
                     className="modalStyle"
                     overlayClassName="modalOverlay"
+                    shouldCloseOnOverlayClick={false}
                   >
                     <>
                       {linkedinPostModalRender()}
