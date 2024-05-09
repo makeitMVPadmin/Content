@@ -97,7 +97,7 @@
   }
 
   &__input-box {
-    border: 1px solid black;
+    border: 3px solid black;
     border-radius: 8px;
     padding: 10px;
     width: 100%;
@@ -107,16 +107,19 @@
     resize: none;
     overflow-y: scroll;
     align-self: center;
+    font-family: 'Gilroy';
   }
 
   &__preview-box {
-    border: 1px solid black;
+    border: 3px solid black;
     border-radius: 8px;
     padding: 10px;
     width: 100%;
     height: 100px;
     overflow-y: scroll;
+    resize: none;
     background-color: white;
+    font-family: 'Gilroy';
   }
 
   &__sub-container {
@@ -295,10 +298,7 @@
   //   background-color: #6393cd;
   // }
 
-
   // exit area button container end
-
-
 
   &__mood-box {
     display: flex;
@@ -326,6 +326,8 @@
     margin-right: 10px;
     color: gray;
     font-weight: bold;
+    border-radius: 8px;
+    border: 3px solid black;
   }
 
   &__bottom-section {

@@ -50,9 +50,9 @@ const ReviewPost = ({ previewText, setPreviewText, setActivePage }) => {
 
   return (
     <>
-      <div className="promptpage__container">
+      {/* <div className="promptpage__container"> */}
         {previewContent()}
-      </div>
+      {/* </div> */}
       {editAndWordCount()}
     </>
   );
