@@ -34,7 +34,7 @@ const ReviewPost = ({ previewText, setPreviewText, setActivePage }) => {
     return (
       <div className="edit-btn-area">
 
-        <p className="word-count"><img src={Variant3} alt="linked-in-logo"></img>&nbsp;&nbsp;{previewText.split(" ").length} / 2500</p>
+        <p className="word-count"><img src={Variant3} alt="linked-in-logo"></img>&nbsp;&nbsp;{previewText.split('').length} / 2500 characters</p>
 
         {!isEditing ?
           <p className="edit" onClick={handleToggleEditing}>

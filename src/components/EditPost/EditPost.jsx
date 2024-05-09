@@ -14,7 +14,8 @@ const EditPost = ({
   handleInputChange,
   setPreviewText,
   setActivePage,
-  previewText
+  previewText,
+  setShowNextButton
 }) => {
 
   const [toneVal, setToneVal] = useState("professional");
@@ -112,6 +113,7 @@ const EditPost = ({
         </div>
       )
     } else {
+      setShowNextButton(true);
       return <BottomContentSections
         previewText={previewText}
         setPreviewText={setPreviewText}
@@ -152,15 +154,15 @@ const EditPost = ({
             placeholder="What is this about?"
             className="promptpage__input-box"
           />
-          <h4>Output size</h4>
+          <h4>Output size &#40;characters&#41;</h4>
           {/* this will need to be within form, along with everything else */}
           <div className="promptpage__choice-selection" onChange={handleSizeSelect}>
             <input type="radio" id="small" name="output-size" value="small"></input>
-            <label htmlFor="small">Small</label><br></br>
+            <label htmlFor="small">Small <span style={{color:"#909197"}}>&#40;&#60;200&#41;</span></label><br></br>
             <input type="radio" id="med" name="output-size" value="med"></input>
-            <label htmlFor="med">Medium</label><br></br>
+            <label htmlFor="med">Medium <span style={{color:"#909197"}}>&#40;&#60;1500&#41;</span></label><br></br>
             <input type="radio" id="large" name="output-size" value="large"></input>
-            <label htmlFor="large">Large</label><br></br>
+            <label htmlFor="large">Large <span style={{color:"#909197"}}>&#40;&#60;2500&#41;</span></label><br></br>
           </div>
         </div>
         <Button

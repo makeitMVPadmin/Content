@@ -27,6 +27,7 @@ const PromptPage = () => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [successMessage, setsuccessMessage] = useState(null);
   const [isSetLoadSpinner, setLoadSpinner] = useState(null);
+  const [showNextButton, setShowNextButton] = useState(false);
 
   const content = {
     prompts: [inputText],
@@ -40,6 +41,7 @@ const PromptPage = () => {
 
   const handleBackClick = () => {
     setActiveTab("edit");
+    setShowNextButton(false);
   };
 
   const handleOpenPostModal = () => {
@@ -58,6 +60,9 @@ const PromptPage = () => {
     setInputText("");
   };
 
+  const handlePostClick = () => {
+    setActiveTab("review");
+  }
   const handleLinkedinRedirect = () => {
     window.open("https://www.linkedin.com/in/", "_blank");
   };
@@ -141,12 +146,21 @@ const PromptPage = () => {
                   setActivePage={setActiveTab}
                   setPreviewText={setPreviewText}
                   previewText={previewText}
+                  setShowNextButton={setShowNextButton}
                 />
               </div>
-              <div className="promptpage__exit-area">
+              {/* <div className="promptpage__exit-area">
                 <Link style={{color: "black"}} className="promptpage__back-btn" to="/dashboard">
                   <h3>&#60; Exit</h3>
                 </Link>
+              </div> */}
+               <div className="btn-container-prompt-tab">
+                <Link style={{color: "black"}} className="promptpage__back-btn" to="/dashboard">
+                    <h3>&#60; Exit</h3>
+                  </Link>
+                {showNextButton && <Button className="promptpage__next-btn" onClick={handlePostClick}>
+                  Next
+                </Button>}
               </div>
             </div>
           </div>
