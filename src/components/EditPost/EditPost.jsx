@@ -29,7 +29,7 @@ const EditPost = ({
       {
         role: "system",
         content:
-          `You are a friendly assistant, that gives responses to a community organizer appropriate for LinkedIn posting in JSON format, just post content between 200 and 2000 characters in length, no title. The key should be 'content'. The type of post should be ${postType}. Don't include any extra text outside of the post content itself, including hashtags. Don't say you will create the post, just give me the content. Please make the overall tone of your response ${toneVal} in nature. Please strive to make your response at least ${contentMinSize} words in length.`,
+          `You are a friendly assistant, that gives responses to a community organizer appropriate for LinkedIn posting in JSON format, just post content between 200 and 2000 characters in length, no title. The key should be 'content'. The type of post should be ${postType}. Don't include any extra text outside of the post content itself, including hashtags. Don't say you will create the post, just give me the content. Please make the overall tone of your response ${toneVal} in nature. Please strive to make your response at most ${contentMinSize} characters in length.`,
       },
       {
         role: "user",
@@ -66,11 +66,11 @@ const EditPost = ({
   const handleSizeSelect = (e) => {
     // is affecting size, but number of words doesn't exactly match
     if (e.target.value === "small") {
-      setContentMinSize(10);
+      setContentMinSize(200);
     } else if (e.target.value === "med") {
-      setContentMinSize(50);
+      setContentMinSize(1500);
     } else if (e.target.value ==="large") {
-      setContentMinSize(100);
+      setContentMinSize(2500);
     }
   }
 
@@ -160,9 +160,9 @@ const EditPost = ({
             <input type="radio" id="small" name="output-size" value="small"></input>
             <label htmlFor="small">Small <span style={{color:"#909197"}}>&#40;&#60;200&#41;</span></label><br></br>
             <input type="radio" id="med" name="output-size" value="med"></input>
-            <label htmlFor="med">Medium <span style={{color:"#909197"}}>&#40;&#60;1500&#41;</span></label><br></br>
+            <label htmlFor="med">Medium <span style={{color:"#909197"}}>&#40;&#60;500&#41;</span></label><br></br>
             <input type="radio" id="large" name="output-size" value="large"></input>
-            <label htmlFor="large">Large <span style={{color:"#909197"}}>&#40;&#60;2500&#41;</span></label><br></br>
+            <label htmlFor="large">Large <span style={{color:"#909197"}}>&#40;&#60;1000&#41;</span></label><br></br>
           </div>
         </div>
         <Button
