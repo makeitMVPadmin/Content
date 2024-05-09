@@ -98,7 +98,7 @@
 
   &__input-box {
     border: 1px solid black;
-    border-radius: 5px;
+    border-radius: 8px;
     padding: 10px;
     width: 100%;
     margin-left: 2rem;
@@ -111,7 +111,7 @@
 
   &__preview-box {
     border: 1px solid black;
-    border-radius: 5px;
+    border-radius: 8px;
     padding: 10px;
     width: 100%;
     height: 100px;
@@ -125,7 +125,7 @@
     flex-direction: column;
     width: 100%;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 8px;
   }
 
   &__sub-container>h4 {
@@ -141,17 +141,20 @@
     background-color: $MVP-Dark-Blue;
     padding: 8px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 1rem;
   }
+  // &__generate-btn:hover{
+  //   background-color: #6393cd;
+  // }
 
   &__close-btn {
     color: white;
     background-color: $MVP-Dark-Blue;
     padding: 8px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 1rem;
   }
@@ -202,27 +205,31 @@
     }
   }
 
+// post area button container start
   &__post-btn {
     background-color: $MVP-Yellow;
     width: 160px;
     padding: 8px;
-    border-radius: 5px;
+    border-radius: 8px;
+    border: 3px solid black;
     cursor: pointer;
     font-size: 20px;
     align-items: center;
     text-align: center;
   }
-
+  // &__post-btn:hover{
+  //   background-color: #ffeca6;
+ 
+  // }
 
   &__back-btn {
     background-color: white;
     width: 160px;
     padding: 8px;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 20px;
     border: 0px;
-    border-radius: 8px;
     display: flex;
     flex-direction: row;
     // align-items: center;
@@ -242,6 +249,7 @@
     font-family: Gilroy;
     padding-top: 12px;
   }
+  // post area button container end
 
   // exit area button container start
   .btn-container-prompt-tab {
@@ -261,7 +269,6 @@
     background-color: white;
     width: 160px;
     padding: 8px;
-    border-radius: 5px;
     cursor: pointer;
     font-size: 20px;
     border: 0px;
@@ -277,12 +284,17 @@
     background-color: $MVP-Dark-Blue;
     width: 160px;
     padding: 8px;
-    border-radius: 5px;
+    border-radius: 8px;
+    border: 3px solid;
     cursor: pointer;
     font-size: 20px;
     text-align: center;
     color: white;
   }
+  // &__next-btn:hover{
+  //   background-color: #6393cd;
+  // }
+
 
   // exit area button container end
 
