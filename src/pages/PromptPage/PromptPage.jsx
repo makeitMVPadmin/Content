@@ -10,13 +10,13 @@ import { useLinkedInlogin } from "../../utils/linkedInApi";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import SuccessMessageAlert from "../../components/SuccessMessageAlert/SuccessMessageAlert";
 import { PopUpModal, PopUpStyle } from "../../components/PopUpModal/PopUpModal";
-import { HiOutlineRocketLaunch } from "react-icons/hi2";
 import rocketAiIcon from "../../assets/images/rocketAiIcon.svg";
 import ErrorMessageAlert from "../../components/ErrorMessageAlert/ErrorMessageAlert";
 import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
 import CommitAIBanner from "../../components/CommitAIBanner/CommitAIBanner";
 import { Link } from "react-router-dom";
 import Variant3 from "../../assets/icons/Variant3.png";
+import linkedinIconWhite from "../../assets/logos/linkedinIconWhite.svg";
 
 const PromptPage = () => {
   const [inputText, setInputText] = useState("");
@@ -27,6 +27,7 @@ const PromptPage = () => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [successMessage, setsuccessMessage] = useState(null);
   const [isSetLoadSpinner, setLoadSpinner] = useState(null);
+  const [showNextButton, setShowNextButton] = useState(false);
 
   const content = {
     prompts: [inputText],
@@ -40,6 +41,7 @@ const PromptPage = () => {
 
   const handleBackClick = () => {
     setActiveTab("edit");
+    setShowNextButton(false);
   };
 
   const handleOpenPostModal = () => {
@@ -58,8 +60,11 @@ const PromptPage = () => {
     setInputText("");
   };
 
+  const handlePostClick = () => {
+    setActiveTab("review");
+  }
   const handleLinkedinRedirect = () => {
-    window.open("https://www.linkedin.com/in/","_blank");
+    window.open("https://www.linkedin.com/in/", "_blank");
   };
 
   const { linkedInLogin } = useLinkedInlogin(content, setsuccessMessage, setErrorMessage, setLoadSpinner);
@@ -107,7 +112,7 @@ const PromptPage = () => {
           >
           </SuccessMessageAlert>
           <Button className="successMessage__linkedin-btn" onClick={handleLinkedinRedirect}>
-            Go to Linkedin
+            Go to Linkedin <img src={linkedinIconWhite} />
           </Button>
         </PopUpModal>
       )
@@ -134,43 +139,60 @@ const PromptPage = () => {
         {activeTab === "edit" && (
           <div className="promptpage__background-container">
             <div className="promptpage__outer-container">
-              <div className="promptpage__container">
+              <div className="promptpage_container">
                 <EditPost
                   inputText={inputText}
                   handleInputChange={handleInputChange}
                   setActivePage={setActiveTab}
                   setPreviewText={setPreviewText}
                   previewText={previewText}
+                  setShowNextButton={setShowNextButton}
                 />
               </div>
-              <div className="promptpage__exit-area">
-                <Link to="/dashboard">
-                  <h3>&#60;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exit</h3>
+              {/* <div className="promptpage__exit-area">
+                <Link style={{color: "black"}} className="promptpage__back-btn" to="/dashboard">
+                  <h3>&#60; Exit</h3>
                 </Link>
+              </div> */}
+               <div className="btn-container-prompt-tab">
+                <Link style={{color: "black"}} className="promptpage__back-btn" to="/dashboard">
+                    <h3>&#60; Exit</h3>
+                  </Link>
+                {showNextButton && <Button className="promptpage__next-btn" onClick={handlePostClick}>
+                  Next
+                </Button>}
               </div>
             </div>
           </div>
         )}
         {activeTab === "review" && (
-          <div className="promptpage_container">
-            <button onClick={handleBackClick}>Back</button>
-            <MockLinkedInPost previewText={previewText}></MockLinkedInPost>
-            <Button className="promptpage__post-btn" onClick={handleOpenPostModal}>
-              Post on LinkedIn
-            </Button>
-
-            <Modal
-              id="promptpage__linkedinpost-modal"
-              isOpen={isModalOpen}
-              onRequestClose={handleClosePostModal}
-              ariaHideApp={false}
-              className="modalStyle"
-              overlayClassName="modalOverlay"
-            >
-              <>
-                {linkedinPostModalRender()}
-              </>
-            </Modal>
+          <div className="promptpage__background-container">
+            <div className="promptpage__outer-container">
+              <div className="promptpage_container">
+                <div className="promptpage__container">
+                  <MockLinkedInPost previewText={previewText} userName={"Steph.Ai"}></MockLinkedInPost>
+                  <Modal
+                    id="promptpage__linkedinpost-modal"
+                    isOpen={isModalOpen}
+                    onRequestClose={handleClosePostModal}
+                    ariaHideApp={false}
+                    className="modalStyle"
+                    overlayClassName="modalOverlay"
+                    shouldCloseOnOverlayClick={false}
+                  >
+                    <>
+                      {linkedinPostModalRender()}
+                    </>
+                  </Modal>
+                </div>
+              </div>
+              <div className="btn-container">
+                <Button className="promptpage__back-btn" onClick={handleBackClick}>&#60; Back</Button>
+                <Button className="promptpage__post-btn" onClick={handleOpenPostModal}>
+                  Post
+                </Button>
+              </div>
+            </div>
           </div>
         )}
       </>

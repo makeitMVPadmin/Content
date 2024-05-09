@@ -8,8 +8,6 @@ const Home = () => {
     <div className="home">
       <h1 className="home__title"> Welcome to COMMIT AI!</h1>
       <Link to="/prompt">Prompt the AI here</Link>
-      {/* <UserList /> */}
-      <MessageList />
     </div>
   );
 };

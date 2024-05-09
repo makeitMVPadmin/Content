@@ -71,14 +71,15 @@
     border-radius: 8px;
     // This color is not in the MVP variables, but it's on the mockup
     background-color: #E1F0FB;
+    border: 3px black solid;
   }
 
   &__input-container {
-    border: 1px solid black;
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    border-radius: 8px;
   }
 
   &__input-container>* {
@@ -96,8 +97,8 @@
   }
 
   &__input-box {
-    border: 1px solid black;
-    border-radius: 5px;
+    border: 3px solid black;
+    border-radius: 8px;
     padding: 10px;
     width: 100%;
     margin-left: 2rem;
@@ -106,16 +107,19 @@
     resize: none;
     overflow-y: scroll;
     align-self: center;
+    font-family: 'Gilroy';
   }
 
   &__preview-box {
-    border: 1px solid black;
-    border-radius: 5px;
+    border: 3px solid black;
+    border-radius: 8px;
     padding: 10px;
     width: 100%;
     height: 100px;
     overflow-y: scroll;
+    resize: none;
     background-color: white;
+    font-family: 'Gilroy';
   }
 
   &__sub-container {
@@ -124,7 +128,7 @@
     flex-direction: column;
     width: 100%;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 8px;
   }
 
   &__sub-container>h4 {
@@ -140,16 +144,20 @@
     background-color: $MVP-Dark-Blue;
     padding: 8px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 1rem;
   }
-  &__close-btn{
+  // &__generate-btn:hover{
+  //   background-color: #6393cd;
+  // }
+
+  &__close-btn {
     color: white;
     background-color: $MVP-Dark-Blue;
     padding: 8px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 1rem;
   }
@@ -173,33 +181,124 @@
     }
 
   }
-
-  &__choice-selection>* {
+  &__choice-selection>input {
     @include Mobile {
       margin: 5px;
     }
 
     @include Tablet {
-      margin-left: 15px;
-      margin-right: 15px;
+      margin:8px;
     }
 
     @include Desktop {
-      margin-left: 15px;
-      margin-right: 15px;
+      margin:8px;
+    }
+  }
+  &__choice-selection>label {
+    @include Mobile {
+      margin: 5px;
     }
 
+    @include Tablet {
+      margin-right: 24px;
+    }
 
-
+    @include Desktop {
+      margin-right: 24px;
+    }
   }
 
+// post area button container start
   &__post-btn {
     background-color: $MVP-Yellow;
+    width: 160px;
     padding: 8px;
-    border-radius: 5px;
+    border-radius: 8px;
+    border: 3px solid black;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 20px;
+    align-items: center;
+    text-align: center;
   }
+  // &__post-btn:hover{
+  //   background-color: #ffeca6;
+ 
+  // }
+
+  &__back-btn {
+    background-color: white;
+    width: 160px;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 20px;
+    border: 0px;
+    display: flex;
+    flex-direction: row;
+    // align-items: center;
+    // justify-content: flex-start;
+    box-sizing: border-box;
+  }
+
+  .btn-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+    text-align: center;
+    font-size: 24px;
+    font-family: Gilroy;
+    padding-top: 12px;
+  }
+  // post area button container end
+
+  // exit area button container start
+  .btn-container-prompt-tab {
+    justify-content: space-between;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    // justify-content: center;
+    text-align: center;
+    font-size: 24px;
+    font-family: Gilroy;
+    padding-top: 12px;
+  }
+
+  &__exit-btn {
+    background-color: white;
+    width: 160px;
+    padding: 8px;
+    cursor: pointer;
+    font-size: 20px;
+    border: 0px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    // align-items: center;
+    // justify-content: flex-start;
+    box-sizing: border-box;
+  }
+
+  &__next-btn {
+    background-color: $MVP-Dark-Blue;
+    width: 160px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 3px solid;
+    cursor: pointer;
+    font-size: 20px;
+    text-align: center;
+    color: white;
+  }
+  // &__next-btn:hover{
+  //   background-color: #6393cd;
+  // }
+
+  // exit area button container end
 
   &__mood-box {
     display: flex;
@@ -227,6 +326,8 @@
     margin-right: 10px;
     color: gray;
     font-weight: bold;
+    border-radius: 8px;
+    border: 3px solid black;
   }
 
   &__bottom-section {
@@ -247,4 +348,3 @@
 
 
 }
-

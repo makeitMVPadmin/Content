@@ -7,7 +7,7 @@ import clockIcon from "../../assets/icons/clock.svg";
 const BottomContentSections = ({
   previewText,
   setPreviewText,
-  handlePostClick
+  handlePostClick,
 }) => {
   return (
     <div className="promptpage__bottom-section">
@@ -19,12 +19,18 @@ const BottomContentSections = ({
           setPreviewText={setPreviewText}
         />
       </div>
-      <PromptHeader headerText={"Publishing Options"} icon={clockIcon} />
-        <Button
+      {/* Publish options for future iteration */}
+      
+      {/* <PromptHeader headerText={"Publishing Options"} icon={clockIcon} /> */}
+        {/* <Button
           className="preview"
           onClick={handlePostClick}>
-            Preview Post
-        </Button>
+            Next
+        </Button> */}
+        {/* <div className="promptpage__choice-selection">
+            <input type="radio" id="publish_now" name="output-size" value="publish_now"></input>
+            <label htmlFor="publish_now">Publish Now</label>
+        </div> */}
     </div>
   )
 }
