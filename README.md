@@ -1,5 +1,5 @@
 
-# MakeItMVP: Communiti Content
+# MakeItMVP: Communiti Content - CommitAI
 
 Welcome to Communiti's social media content generator! Communiti is a community management platform designed oto foster and streamline engagement. This feature is an AI-powered tool for community managers that generates text content for LinkedIn posts based on user input.
 
@@ -18,7 +18,7 @@ To begin working on this project, follow these steps:
 1. Clone this repository to your local machine:
 
    ```
-   git clone https://github.com/MakeItMVP/LaunchAcademyStarter.git
+   https://github.com/makeitMVPadmin/Content.git
    ```
 
 2. Change your working directory to the cloned repository:
