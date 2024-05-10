@@ -1,0 +1,14 @@
+@import '../../styles/partials/variables.scss';
+
+.prompt-header {
+  background-color:$MVP-Light-Blue;
+  display: flex;
+  border: 2px solid black;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.prompt-header > * {
+  margin-right: 10px;
+}

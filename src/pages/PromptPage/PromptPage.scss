@@ -1,0 +1,350 @@
+@import '../../styles/partials/_mixins.scss';
+@import '../../styles/partials/variables.scss';
+
+.promptpage-container {
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+}
+
+.promptpage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+
+  @include Mobile {
+    width: 100vw;
+  }
+
+  @include Tablet {
+    width: 75vw;
+  }
+
+  @include Desktop {
+    width: 66vw;
+  }
+
+  &__navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+    // background-color: $Powder-Blue;
+  }
+
+  &__navbar-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px;
+
+    &__active {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      padding: 10px;
+      border-bottom: 5px solid $MVP-Dark-Blue;
+    }
+  }
+
+  &__background-container {
+    width: 100%;
+    padding: 1rem;
+    background-color: #E1F0FB;
+  }
+
+  &__outer-container {
+    width: 100%;
+    background-color: white;
+    padding: 1rem;
+    border: 2px solid black;
+    border-radius: 8px;
+  }
+
+  &__container {
+    width: 100%;
+    border-radius: 8px;
+    // This color is not in the MVP variables, but it's on the mockup
+    background-color: #E1F0FB;
+    border: 3px black solid;
+  }
+
+  &__input-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 8px;
+  }
+
+  &__input-container>* {
+    margin-bottom: 15px;
+  }
+
+
+  &__preview-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+  }
+
+  &__input-box {
+    border: 3px solid black;
+    border-radius: 8px;
+    padding: 10px;
+    width: 100%;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    height: 100px;
+    resize: none;
+    overflow-y: scroll;
+    align-self: center;
+    font-family: 'Gilroy';
+  }
+
+  &__preview-box {
+    border: 3px solid black;
+    border-radius: 8px;
+    padding: 10px;
+    width: 100%;
+    height: 100px;
+    overflow-y: scroll;
+    resize: none;
+    background-color: white;
+    font-family: 'Gilroy';
+  }
+
+  &__sub-container {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  &__sub-container>h4 {
+    color: $MVP-Dark-Blue;
+  }
+
+  &__sub-container>* {
+    margin-bottom: 10px;
+  }
+
+  &__generate-btn {
+    color: white;
+    background-color: $MVP-Dark-Blue;
+    padding: 8px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  // &__generate-btn:hover{
+  //   background-color: #6393cd;
+  // }
+
+  &__close-btn {
+    color: white;
+    background-color: $MVP-Dark-Blue;
+    padding: 8px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+
+  &__choice-selection {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    font-family: 'Gilroy';
+
+    @include Tablet {
+      font-size: 1rem;
+    }
+
+    @include Mobile {
+      font-size: 0.75rem;
+    }
+
+    @include Desktop {
+      font-size: 1rem;
+    }
+
+  }
+  &__choice-selection>input {
+    @include Mobile {
+      margin: 5px;
+    }
+
+    @include Tablet {
+      margin:8px;
+    }
+
+    @include Desktop {
+      margin:8px;
+    }
+  }
+  &__choice-selection>label {
+    @include Mobile {
+      margin: 5px;
+    }
+
+    @include Tablet {
+      margin-right: 24px;
+    }
+
+    @include Desktop {
+      margin-right: 24px;
+    }
+  }
+
+// post area button container start
+  &__post-btn {
+    background-color: $MVP-Yellow;
+    width: 160px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 3px solid black;
+    cursor: pointer;
+    font-size: 20px;
+    align-items: center;
+    text-align: center;
+  }
+  // &__post-btn:hover{
+  //   background-color: #ffeca6;
+ 
+  // }
+
+  &__back-btn {
+    background-color: white;
+    width: 160px;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 20px;
+    border: 0px;
+    display: flex;
+    flex-direction: row;
+    // align-items: center;
+    // justify-content: flex-start;
+    box-sizing: border-box;
+  }
+
+  .btn-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+    text-align: center;
+    font-size: 24px;
+    font-family: Gilroy;
+    padding-top: 12px;
+  }
+  // post area button container end
+
+  // exit area button container start
+  .btn-container-prompt-tab {
+    justify-content: space-between;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    // justify-content: center;
+    text-align: center;
+    font-size: 24px;
+    font-family: Gilroy;
+    padding-top: 12px;
+  }
+
+  &__exit-btn {
+    background-color: white;
+    width: 160px;
+    padding: 8px;
+    cursor: pointer;
+    font-size: 20px;
+    border: 0px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    // align-items: center;
+    // justify-content: flex-start;
+    box-sizing: border-box;
+  }
+
+  &__next-btn {
+    background-color: $MVP-Dark-Blue;
+    width: 160px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 3px solid;
+    cursor: pointer;
+    font-size: 20px;
+    text-align: center;
+    color: white;
+  }
+  // &__next-btn:hover{
+  //   background-color: #6393cd;
+  // }
+
+  // exit area button container end
+
+  &__mood-box {
+    display: flex;
+    width: 100%;
+    color: $MVP-Dark-Blue;
+
+    @include Mobile {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    @include Tablet {
+      flex-direction: column;
+
+    }
+
+    @include Desktop {
+      flex-direction: row;
+    }
+
+  }
+
+  &__mood-box>select {
+    margin-left: 10px;
+    margin-right: 10px;
+    color: gray;
+    font-weight: bold;
+    border-radius: 8px;
+    border: 3px solid black;
+  }
+
+  &__bottom-section {
+    width: 100%;
+  }
+
+  &__spinner {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  &__exit-area {
+    margin-top: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+
+
+}
